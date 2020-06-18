@@ -1,24 +1,79 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
+
+import ProgressBar, {
+  StepData,
+} from './components/molecules/ProgressBar/ProgressBar';
 
 function App() {
+  const [progressBarData, setProgressData] = useState({
+    headerText:
+      'Create a plan to meet your short and long term investment goals.',
+    status: 'Pending',
+    steps: [
+      { id: 1, text: 'Register your account', status: 'Pending' },
+      { id: 2, text: 'Complete your wellness assessment', status: 'Pending' },
+      { id: 3, text: 'Link your account', status: 'Pending' },
+      { id: 4, text: 'Schedule your first call', status: 'Pending' },
+    ],
+  });
+  let { headerText, steps } = progressBarData;
+  const taskHandler = (e: any) => {
+    const currentIndex = steps.findIndex((item) => {
+      return item.text === e;
+    });
+
+    let tempStep = [...steps];
+    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
+      tempStep[currentIndex].status = 'Current';
+    } else {
+      tempStep[currentIndex].status = 'Complete';
+      if (currentIndex + 1 < steps.length) {
+        tempStep[currentIndex + 1].status = 'Current';
+      }
+    }
+
+    setProgressData({
+      ...progressBarData,
+      steps: tempStep,
+    });
+  };
+  const checkStatus = ({ steps }: { steps: StepData[] }) => {
+    const taskStatus = {
+      total: steps.length,
+      pending: 0,
+      completed: 0,
+    };
+    steps.forEach((item) => {
+      if (item.status === 'Pending') {
+        taskStatus.pending += 1;
+      }
+      if (item.status === 'Complete') {
+        taskStatus.completed += 1;
+      }
+    });
+    if (taskStatus.total === taskStatus.pending) {
+      return 'Not Started';
+    }
+    if (taskStatus.completed > 0 && taskStatus.completed < taskStatus.total) {
+      return 'In Progress';
+    }
+    if (taskStatus.completed === taskStatus.total && taskStatus.pending === 0) {
+      return 'Finished';
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="container__row">
+        <div className="container__col-sm-12 container__col-md-12">
+          <ProgressBar
+            headerText={headerText}
+            status={checkStatus(progressBarData)}
+            steps={steps}
+            taskClickHandler={taskHandler}
+          />
+        </div>
+      </div>
     </div>
   );
 }

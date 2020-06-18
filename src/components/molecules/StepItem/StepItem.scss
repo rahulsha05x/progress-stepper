@@ -1,0 +1,128 @@
+.StepItem {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  @include breakpoint-max(m-l) {
+    border: none;
+  }
+  &--vertical {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    flex-direction: row;
+    align-items: flex-start;
+
+    &::after {
+      position: absolute;
+      top: 3.44rem;
+      left: 2.139rem;
+      width: 3px;
+      z-index: 2;
+      height: calc(100% - 30px);
+      content: '';
+      background-color: rgba(0, 0, 0, 0.1);
+      @include breakpoint-max(m-l) {
+        top: 1.93644rem;
+        left: 2.6rem;
+        width: calc(100% - 16px);
+        height: 4px;
+        flex: 1;
+      }
+    }
+    &--Pending {
+      &::after {
+        background-color: $light-gray;
+      }
+    }
+    &--Current {
+      &::after {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+    &--Complete {
+      &::after {
+        background-color: $blue-1;
+      }
+    }
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: #dfe6f1;
+  }
+  &__Button {
+    display: block;
+    padding: 0.94rem;
+    margin-top: 1.2rem;
+    margin-left: 6.13rem;
+    margin-bottom: 2rem;
+    background-color: $blue-1;
+    color: #fff;
+    @include breakpoint-max(xl) {
+      margin-top: 0;
+      display: none;
+    }
+    &:hover {
+      background-color: darken($color: $blue-1, $amount: 20);
+    }
+  }
+  .StepItem__Marker {
+    padding: 1.5rem;
+    text-align: center;
+    &--vertical {
+      position: relative;
+      display: flex;
+      align-self: flex-start;
+    }
+    .circle {
+      display: inline-block;
+      width: 1.75rem;
+      height: 1.75rem;
+      margin-right: 2.5rem;
+      line-height: 1.7rem;
+      color: rgba(255, 255, 255, 0.856);
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.28);
+      border-radius: 50%;
+      @include breakpoint-max(m-l) {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &--Complete {
+        background-color: steelblue;
+        @include breakpoint-max(m-l) {
+          position: relative;
+          .fa {
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            font-size: 10px;
+          }
+        }
+      }
+
+      &--Current {
+        border: 1px solid rgba(140, 139, 233, 2.9);
+      }
+    }
+    .label {
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.87);
+      display: inline-block;
+      @include breakpoint-max(m-l) {
+        display: none;
+      }
+      &--vertical {
+        text-align: left;
+        order: 2;
+        margin-top: 0.2rem;
+        flex-flow: column nowrap;
+        width: 100%;
+      }
+    }
+  }
+}

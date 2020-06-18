@@ -1,0 +1,11 @@
+//@import '../../../styles/main.scss';
+.btn {
+  background-color: $blue-1;
+  color: $white;
+  border-radius: 1px;
+  padding: 5px;
+  border-radius: 2px;
+  &:hover {
+    background-color: darken($color: $blue-1, $amount: 20);
+  }
+}

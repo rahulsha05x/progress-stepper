@@ -1,0 +1,83 @@
+.ProgressBar {
+  .hide {
+    display: none;
+  }
+  &__Mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 1.8rem;
+    justify-content: space-evenly;
+    min-height: 10rem;
+    &__Text {
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.87);
+      display: none;
+      @include breakpoint-max(m-l) {
+        display: inline-block;
+      }
+    }
+    &__Status {
+      color: silver;
+    }
+    &__Button {
+      display: none;
+      color: #fff;
+      width: 100px;
+      height: 50px;
+
+      background-color: $blue-1;
+      @include breakpoint-max(xl) {
+        display: block;
+      }
+    }
+  }
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border: 1px solid $light-gray;
+  min-height: 95px;
+  &__Sub {
+    color: #4b4444;
+    margin-left: 5.3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    .fa {
+      margin-right: 2rem;
+    }
+    @include breakpoint-max(m-l) {
+      display: none;
+    }
+  }
+  &__Main {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    flex-basis: 20%;
+    padding: 0 20px;
+    @include breakpoint-max(m-l) {
+      display: none;
+    }
+    &__StatusIndicator {
+      background-color: $blue-1;
+      border: 1px solid $blue-1;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      align-self: center;
+      margin-right: 33px;
+    }
+  }
+  &__Steps {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    @include breakpoint-max(m-l) {
+      flex-direction: row;
+      position: relative;
+    }
+  }
+}
