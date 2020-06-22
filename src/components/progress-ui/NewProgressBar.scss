@@ -22,9 +22,10 @@
             .progress-marker {
                 .line {
                     width: 2px;
-                    height: 100%;
-                    top: 0;
+                    height: calc(100% - 16px);
+                    top: 16px;
                     left: 50%;
+                    margin-left: 0;
                 }
                 &:after {
                     right: auto;

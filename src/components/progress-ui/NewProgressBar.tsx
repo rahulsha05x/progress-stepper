@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
+import NewProgressStep from './NewProgressStep';
 
 export interface StepData {
     text?: string | object;
     status?: string;
     id: number;
+    progress?: number;
 }
 interface Props {
     steps: StepData[];
     activeStep: number;
     orientation?: string;
     color?: string;
+    content?: any;
 }
+
+function renderProgressText(step: StepData) {
+
+    if (typeof step.text === 'string') {
+        return <div>
+            {step.text}
+        </div>
+    }
+
+    if (React.isValidElement(step.text)) {
+        return step.text;
+    }
+}
+
 const NewProgressBar: React.FC<Props> = ({
     steps,
     activeStep,
     orientation = "horizontal",
-    color
+    color,
+    content
 }) => {
-
-    function renderProgressText(step: StepData) {
-
-        if (typeof step.text === 'string') {
-            return <div>
-                {step.text}
-            </div>
-        }
-
-        if (React.isValidElement(step.text)) {
-            return step.text;
-        }
-    }
 
     return (
         <div>
@@ -37,7 +42,8 @@ const NewProgressBar: React.FC<Props> = ({
                 {
                     steps.map((step: StepData, index: number) => {
                         let stepClass = '';
-                        if (activeStep > index + 1) {
+                        const completed = activeStep > index + 1;
+                        if (completed) {
                             stepClass = "is-completed";
                         }
                         if (activeStep === index + 1) {
@@ -45,15 +51,15 @@ const NewProgressBar: React.FC<Props> = ({
                         }
 
                         return (
-                            <li key={step.id || index} className={`progress-step ${stepClass}`}>
-                                <div className="progress-marker">
-                                    <div className="circle" style={{ backgroundColor: color }}></div>
-                                    <div className="line" style={{ backgroundColor: color, backgroundImage: "linear-gradient(to right, #868686 10%, #b6b6b6 10%)" }}></div>
-                                </div>
-                                <div className="progress-text">
-                                    {renderProgressText(step)}
-                                </div>
-                            </li>
+                            <NewProgressStep
+                                key={step.id || index}
+                                {...step}
+                                className={stepClass}
+                                activeStep={activeStep}
+                                completed={completed}
+                                color={color}
+                                content={content}
+                            />
                         )
                     })
                 }
