@@ -77,7 +77,8 @@ function App() {
           <NewProgressBar
             steps={steps}
             activeStep={3}
-            orientation="horizontal"
+            orientation="vertical"
+            color="#ccc"
           />
         </div>
       </div>

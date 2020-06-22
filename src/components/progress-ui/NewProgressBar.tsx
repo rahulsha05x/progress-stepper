@@ -9,11 +9,13 @@ interface Props {
     steps: StepData[];
     activeStep: number;
     orientation?: string;
+    color?: string;
 }
 const NewProgressBar: React.FC<Props> = ({
     steps,
     activeStep,
-    orientation = "horizontal"
+    orientation = "horizontal",
+    color
 }) => {
 
     function renderProgressText(step: StepData) {
@@ -43,8 +45,11 @@ const NewProgressBar: React.FC<Props> = ({
                         }
 
                         return (
-                            <li className={`progress-step ${stepClass}`}>
-                                <div className="progress-marker"></div>
+                            <li key={step.id || index} className={`progress-step ${stepClass}`}>
+                                <div className="progress-marker">
+                                    <div className="circle" style={{ backgroundColor: color }}></div>
+                                    <div className="line" style={{ backgroundColor: color }}></div>
+                                </div>
                                 <div className="progress-text">
                                     {renderProgressText(step)}
                                 </div>
