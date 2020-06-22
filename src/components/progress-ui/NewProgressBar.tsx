@@ -48,7 +48,7 @@ const NewProgressBar: React.FC<Props> = ({
                             <li key={step.id || index} className={`progress-step ${stepClass}`}>
                                 <div className="progress-marker">
                                     <div className="circle" style={{ backgroundColor: color }}></div>
-                                    <div className="line" style={{ backgroundColor: color }}></div>
+                                    <div className="line" style={{ backgroundColor: color, backgroundImage: "linear-gradient(to right, #868686 10%, #b6b6b6 10%)" }}></div>
                                 </div>
                                 <div className="progress-text">
                                     {renderProgressText(step)}

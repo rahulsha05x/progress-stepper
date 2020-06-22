@@ -80,11 +80,12 @@
                 color: #FFF;
             }
             .line {
-                width: 100%;
+                width: calc(100% - 16px);
                 height: 2px;
                 background-color: #4B0082;
                 position: absolute;
                 top: 50%;
+                margin-left: 16px;
             }
             &:before {
                 //content: '';
