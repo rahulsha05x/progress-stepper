@@ -22,8 +22,8 @@
             .progress-marker {
                 .line {
                     width: 2px;
-                    height: calc(100% - 16px);
-                    top: 16px;
+                    height: calc(100% - 20px);
+                    top: 20px;
                     left: 50%;
                     margin-left: 0;
                 }
@@ -47,7 +47,7 @@
         margin: 0;
         padding: 0;
         min-width: 24px;
-        &.is-active {
+        /* &.is-active {
             .progress-marker {
                 &:before {
                     background-color: #4B0082;
@@ -68,7 +68,7 @@
                     background-color: #4B0082;
                 }
             }
-        }
+        } */
         .progress-marker {
             display: block;
             position: relative;
@@ -80,6 +80,8 @@
                 display: flex;
                 color: #FFF;
                 padding: 2px;
+                justify-content: center;
+                align-items: 'center';
             }
             .line {
                 width: calc(100% - 16px);
@@ -89,7 +91,7 @@
                 top: 50%;
                 margin-left: 16px;
             }
-            &:before {
+            /* &:before {
                 //content: '';
                 @include flex-display();
                 -webkit-box-pack: center;
@@ -122,7 +124,7 @@
                 -webkit-transition: background-color 0.3s, background-position 0.3s;
                 transition: background-color 0.3s, background-position 0.3s;
                 background-color: #b6b6b6;
-            }
+            } */
         }
         &:last-child {
             .progress-marker {

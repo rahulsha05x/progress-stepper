@@ -13,10 +13,10 @@ function App() {
       'Create a plan to meet your short and long term investment goals.',
     status: 'Pending',
     steps: [
-      { id: 1, text: <div className="test">Register your account</div>, status: 'Pending', progress: 10 },
-      { id: 2, text: 'Complete your wellness assessment', status: 'Pending', progress: 20 },
-      { id: 3, text: 'Link your account', status: 'Pending', progress: 40 },
-      { id: 4, text: 'Schedule your first call', status: 'Pending', progress: 80 },
+      { id: 1, text: <div className="test">Register your account</div>, status: 'Pending' },
+      { id: 2, text: 'Complete your wellness assessment', status: 'Pending' },
+      { id: 3, text: 'Link your account', status: 'Pending' },
+      { id: 4, text: 'Schedule your first call', status: 'Pending' },
     ],
   });
   let { headerText, steps } = progressBarData;
@@ -78,8 +78,8 @@ function App() {
             steps={steps}
             activeStep={3}
             color="#4B0082"
-            orientation="horizontal"
-            content={<i className="fa fa-check"></i>}
+            orientation="vertical"
+            icon={<i className="fa fa-check"></i>}
           />
         </div>
       </div>
