@@ -19,7 +19,7 @@ export const Circle = ({
   const styles = {
     background: completed ? color : 'none',
     borderRadius: squared ? '0px' : '50%',
-    borderColor: active ? color : '#ccc'
+    borderColor: active || completed ? color : '#ccc'
   };
   return (
     <div className={`circle ${className}`} style={styles}>
