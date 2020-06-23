@@ -5,22 +5,21 @@ export const Line = ({
   className = '',
   orientation = 'horizontal',
   progress,
-  active
+  active,
 }: {
-    color: string;
-    orientation?: string;
-    progress?: string | number;
-    className?: string;
-    active?: boolean;
-  }) => {
-  console.log('orientation', orientation);
+  color: string;
+  orientation?: string;
+  progress?: string | number;
+  className?: string;
+  active?: boolean;
+}) => {
   const progressDirection =
     orientation === 'vertical' ? 'to bottom' : 'to right';
   const inactive = '#b6b6b6';
   const exp = `${progressDirection}, ${color} ${progress}%, ${inactive} ${progress}%`;
-  console.log('Expression', exp);
+
   let styles: any = {
-    backgroundColor: active ? "#ccc" : color,
+    backgroundColor: active ? '#ccc' : color,
   };
   if (progress) {
     styles['backgroundImage'] = `linear-gradient(${exp})`;

@@ -5,72 +5,64 @@ import TextWrapper from '../molecules/TextWrapper/TextWrapper';
 import Step from '../molecules/StepperItem/Step';
 import IconWrapper from '../molecules/IconContainer/IconWrapper';
 interface Props {
-    activeStep: number;
-    className?: string;
-    color?: string;
-    icon?: any;
-    completed?: boolean;
-    text?: any;
-    key?: string | number;
-    progress?: number;
-    orientation?: string;
-    squared?: boolean;
-    active?: boolean;
+  activeStep: number;
+  className?: string;
+  color?: string;
+  icon?: any;
+  completed?: boolean;
+  text?: any;
+  key?: string | number;
+  progress?: number;
+  orientation?: string;
+  squared?: boolean;
+  active?: boolean;
 }
 
 function renderProgressText(text: any) {
-    if (typeof text === 'string') {
-        return <div>{text}</div>;
-    }
+  if (typeof text === 'string') {
+    return <div>{text}</div>;
+  }
 
-    if (React.isValidElement(text)) {
-        return text;
-    }
+  if (React.isValidElement(text)) {
+    return text;
+  }
 }
 
 const NewProgressStep: React.FC<Props> = ({
-    text,
-    activeStep,
-    color = 'blue',
-    icon,
-    completed = false,
-    className = '',
-    progress = 0,
-    orientation = 'horizontal',
-    squared = false,
-    active = false
+  text,
+  activeStep,
+  color = 'blue',
+  icon,
+  completed = false,
+  className = '',
+  progress = 0,
+  orientation = 'horizontal',
+  squared = false,
+  active = false,
 }) => {
-    let circleStyles: any = {
-        backgroundColor: color,
-    };
-
-    let lineStyles: any = {
-        backgroundColor: color,
-    };
-    if (progress) {
-        lineStyles['backgroundImage'] = `linear-gradient(to ${
-            orientation === 'vertical' ? 'bottom' : 'right'
-            }, ${color} ${progress}%, #b6b6b6 ${progress}%)`;
-    }
-
-    if (squared) {
-        circleStyles['borderRadius'] = 0;
-    }
-
-    return (
-        <Step
-            color={color}
-            completed={completed}
-            content={icon}
-            className={`progress-step ${className}`}
-        >
-            <IconWrapper>
-                <Circle active={active} completed={completed} icon={icon} color={color} squared={squared} />
-                <Line active={active} progress={progress} color={color} />
-            </IconWrapper>
-            <TextWrapper>{renderProgressText(text)}</TextWrapper>
-        </Step>
-    );
+  console.log('Completed', completed);
+  return (
+    <Step
+      color={color}
+      completed={completed}
+      content={icon}
+      className={className}
+    >
+      <IconWrapper>
+        <Circle
+          active={active}
+          completed={completed}
+          icon={icon}
+          color={color}
+          squared={squared}
+        />
+        <Line active={active} progress={progress} color={color} />
+      </IconWrapper>
+      <TextWrapper>{renderProgressText(text)}</TextWrapper>
+    </Step>
+  );
 };
-
+NewProgressStep.defaultProps = {
+  completed: false,
+};
 export default NewProgressStep;

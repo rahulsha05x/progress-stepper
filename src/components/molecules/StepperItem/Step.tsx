@@ -1,6 +1,6 @@
 import React from 'react';
 interface StepProps {
-  className: string;
+  className?: string;
   color?: string;
   completed?: boolean;
   content?: any;
@@ -16,11 +16,13 @@ export const Step = ({
   children,
 }: StepProps) => {
   const getChildren = () => {
-    React.Children.forEach(children, (child, index) => {
-      console.log(child, ': of LI');
+    return React.Children.map(children, (child, index) => {
+      return React.cloneElement(child, {
+        itemIndex: index,
+      });
     });
   };
-  getChildren();
-  return <li className={`progress-step ${className}`}>{children}</li>;
+  const child = getChildren();
+  return <li className={`progress-step ${className}`}>{child}</li>;
 };
 export default Step;

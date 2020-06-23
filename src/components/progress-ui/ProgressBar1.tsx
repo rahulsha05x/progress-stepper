@@ -15,7 +15,7 @@ interface Props {
   content?: any;
 }
 
-const getStatus = (activeStep: number, index: number) => {
+export const getStatus = (activeStep: number, index: number) => {
   let stepClass = 'inactive';
   const completed = activeStep > index + 1;
   if (completed) {
@@ -38,7 +38,6 @@ const NewProgressBar1: React.FC<any> = ({
   const renderChildren = () => {
     return React.Children.map(children, (child, index) => {
       currentItemStatus = getStatus(activeStep, index);
-      console.log(child);
       return React.cloneElement(child, {
         currentItemStatus,
         itemIndex: index,
