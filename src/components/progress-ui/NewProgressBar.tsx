@@ -59,6 +59,7 @@ const NewProgressBar: React.FC<Props> = ({
                                 className={stepClass}
                                 activeStep={activeStep}
                                 completed={completed}
+                                active={activeStep === index + 1}
                                 color={color}
                                 icon={icon}
                                 orientation={orientation}

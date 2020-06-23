@@ -15,6 +15,7 @@ interface Props {
     progress?: number;
     orientation?: string;
     squared?: boolean;
+    active?: boolean;
 }
 
 function renderProgressText(text: any) {
@@ -37,6 +38,7 @@ const NewProgressStep: React.FC<Props> = ({
     progress = 0,
     orientation = 'horizontal',
     squared = false,
+    active = false
 }) => {
     let circleStyles: any = {
         backgroundColor: color,
@@ -63,8 +65,8 @@ const NewProgressStep: React.FC<Props> = ({
             className={`progress-step ${className}`}
         >
             <IconWrapper>
-                <Circle completed={completed} icon={icon} color={color} squared={squared} />
-                <Line progress={progress} color={color} />
+                <Circle active={active} completed={completed} icon={icon} color={color} squared={squared} />
+                <Line active={active} progress={progress} color={color} />
             </IconWrapper>
             <TextWrapper>{renderProgressText(text)}</TextWrapper>
         </Step>

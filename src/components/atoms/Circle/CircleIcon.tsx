@@ -6,6 +6,7 @@ export const Circle = ({
   className = '',
   squared,
   children,
+  active
 }: {
     completed: boolean;
     icon: any;
@@ -13,11 +14,12 @@ export const Circle = ({
     className?: string;
     squared?: boolean;
     children?: any;
+    active?: boolean;
   }) => {
   const styles = {
     background: completed ? color : 'none',
     borderRadius: squared ? '0px' : '50%',
-    borderColor: color
+    borderColor: active ? color : '#ccc'
   };
   return (
     <div className={`circle ${className}`} style={styles}>
