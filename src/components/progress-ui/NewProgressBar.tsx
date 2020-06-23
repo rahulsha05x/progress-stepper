@@ -12,7 +12,8 @@ interface Props {
     activeStep: number;
     orientation?: string;
     color?: string;
-    content?: any;
+    icon?: any;
+    squared?: boolean;
 }
 
 function renderProgressText(step: StepData) {
@@ -33,7 +34,8 @@ const NewProgressBar: React.FC<Props> = ({
     activeStep,
     orientation = "horizontal",
     color,
-    content
+    icon,
+    squared = false
 }) => {
 
     return (
@@ -58,7 +60,9 @@ const NewProgressBar: React.FC<Props> = ({
                                 activeStep={activeStep}
                                 completed={completed}
                                 color={color}
-                                content={content}
+                                icon={icon}
+                                orientation={orientation}
+                                squared={squared}
                             />
                         )
                     })
