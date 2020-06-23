@@ -23,8 +23,9 @@ const StepItem: React.FC<Props> = ({
     `StepItem--${status}`,
   ];
   let circleClasses = ['circle', `circle--${status}`];
+  //Externalize it
   const buttonText = id === 1 ? 'Begin Task' : 'Continue';
-
+  //Externalize it
   const showButton = () => {
     if (id === 1 && (status === 'Pending' || status === 'Current')) {
       return true;
@@ -34,6 +35,7 @@ const StepItem: React.FC<Props> = ({
     }
     return false;
   };
+  //Divide li into two components
   return (
     <li className={stepItemClasses.join(' ')}>
       <i className="StepItem__Marker StepItem__Marker--vertical">

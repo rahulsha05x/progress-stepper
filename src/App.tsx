@@ -6,6 +6,12 @@ import ProgressBar, {
 } from './components/molecules/ProgressBar/ProgressBar';
 
 import NewProgressBar from './components/progress-ui/NewProgressBar';
+import NewProgressBar1 from './components/progress-ui/ProgressBar1';
+import Circle from './components/atoms/Circle/CircleIcon';
+import Line from './components/atoms/Line/Line';
+import IconWrapper from './components/molecules/IconContainer/IconWrapper';
+import TextWrapper from './components/molecules/TextWrapper/TextWrapper';
+import Step from './components/molecules/StepperItem/Step';
 
 function App() {
   const [progressBarData, setProgressData] = useState({
@@ -13,10 +19,25 @@ function App() {
       'Create a plan to meet your short and long term investment goals.',
     status: 'Pending',
     steps: [
-      { id: 1, text: <div className="test">Register your account</div>, status: 'Pending', progress: 10 },
-      { id: 2, text: 'Complete your wellness assessment', status: 'Pending', progress: 20 },
+      {
+        id: 1,
+        text: <div className="test">Register your account</div>,
+        status: 'Pending',
+        progress: 10,
+      },
+      {
+        id: 2,
+        text: 'Complete your wellness assessment',
+        status: 'Pending',
+        progress: 20,
+      },
       { id: 3, text: 'Link your account', status: 'Pending', progress: 40 },
-      { id: 4, text: 'Schedule your first call', status: 'Pending', progress: 80 },
+      {
+        id: 4,
+        text: 'Schedule your first call',
+        status: 'Pending',
+        progress: 80,
+      },
     ],
   });
   let { headerText, steps } = progressBarData;
@@ -26,7 +47,7 @@ function App() {
     });
 
     let tempStep = [...steps];
-    if (currentIndex === 0 && tempStep[currentIndex] ?.status === 'Pending') {
+    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
       tempStep[currentIndex].status = 'Current';
     } else {
       tempStep[currentIndex].status = 'Complete';
@@ -81,6 +102,30 @@ function App() {
             orientation="horizontal"
             content={<i className="fa fa-check"></i>}
           />
+          <NewProgressBar1 activeStep={2}>
+            <Step className="red">
+              <IconWrapper className="IconClass">
+                <Circle
+                  completed
+                  content={<i className="fa fa-check"></i>}
+                  color="green"
+                />
+                <Line color="yellow" />
+              </IconWrapper>
+              <TextWrapper>all right11</TextWrapper>
+            </Step>
+            <Step className="green">
+              <IconWrapper className="IconClass">
+                <Circle
+                  completed
+                  content={<i className="fa fa-check"></i>}
+                  color="green"
+                />
+                <Line color="yellow" />
+              </IconWrapper>
+              <TextWrapper>all right1</TextWrapper>
+            </Step>
+          </NewProgressBar1>
         </div>
       </div>
     </div>
