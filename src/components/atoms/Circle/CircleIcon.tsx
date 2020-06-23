@@ -1,20 +1,26 @@
 import React from 'react';
 export const Circle = ({
   completed,
-  content,
+  icon,
   color,
   className = '',
+  squared,
   children,
 }: {
   completed: boolean;
-  content: any;
+  icon: any;
   color: string;
   className?: string;
+  squared?: boolean;
   children?: any;
 }) => {
+  const styles = {
+    backgroundColor: color,
+    borderRadius: squared ? '0px' : '50%',
+  };
   return (
-    <div className={`circle ${className}`} style={{ backgroundColor: color }}>
-      {completed && content}
+    <div className={`circle ${className}`} style={styles}>
+      {completed && icon}
     </div>
   );
 };

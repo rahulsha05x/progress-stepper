@@ -97,10 +97,11 @@ function App() {
               <IconWrapper className="IconClass">
                 <Circle
                   completed
-                  content={<i className="fa fa-check"></i>}
+                  icon={<i className="fa fa-check"></i>}
                   color="green"
+                  squared
                 />
-                <Line color="yellow" />
+                <Line color="yellow" progress={'50'} />
               </IconWrapper>
               <TextWrapper>all right11</TextWrapper>
             </Step>
@@ -108,8 +109,9 @@ function App() {
               <IconWrapper className="IconClass">
                 <Circle
                   completed
-                  content={<i className="fa fa-check"></i>}
-                  color="green"
+                  icon={<i className="fa fa-check"></i>}
+                  color="yellow"
+                  squared
                 />
                 <Line color="yellow" />
               </IconWrapper>
