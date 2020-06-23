@@ -6,12 +6,12 @@ export const Circle = ({
   className = '',
   children,
 }: {
-  completed: boolean;
-  content: any;
-  color: string;
-  className?: string;
-  children?: any;
-}) => {
+    completed: boolean;
+    content: any;
+    color?: string;
+    className?: string;
+    children?: any;
+  }) => {
   return (
     <div className={`circle ${className}`} style={{ backgroundColor: color }}>
       {completed && content}

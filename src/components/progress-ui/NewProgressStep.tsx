@@ -1,5 +1,9 @@
 import React from 'react';
-
+import Line from '../atoms/Line/Line';
+import Circle from '../atoms/Circle/CircleIcon';
+import TextWrapper from '../molecules/TextWrapper/TextWrapper';
+import Step from '../molecules/StepperItem/Step';
+import IconWrapper from '../molecules/IconContainer/IconWrapper';
 interface Props {
     activeStep: number;
     className?: string;
@@ -54,17 +58,15 @@ const NewProgressStep: React.FC<Props> = ({
     }
 
     return (
-        <li className={`progress-step ${className}`}>
-            <div className="progress-marker">
-                <div className="circle" style={circleStyles}>
-                    {completed && icon}
-                </div>
-                <div className="line" style={lineStyles}></div>
-            </div>
-            <div className="progress-text">
+        <Step color={color} completed={completed} content={icon} className={`progress-step ${className}`}>
+            <IconWrapper>
+                <Circle completed={completed} content={icon} color={color} />
+                <Line color={color} />
+            </IconWrapper>
+            <TextWrapper>
                 {renderProgressText(text)}
-            </div>
-        </li>
+            </TextWrapper>
+        </Step>
     );
 };
 

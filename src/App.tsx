@@ -36,7 +36,7 @@ function App() {
     });
 
     let tempStep = [...steps];
-    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
+    if (currentIndex === 0 && tempStep[currentIndex] ?.status === 'Pending') {
       tempStep[currentIndex].status = 'Current';
     } else {
       tempStep[currentIndex].status = 'Complete';
@@ -88,9 +88,9 @@ function App() {
             steps={steps}
             activeStep={3}
             color="#4B0082"
-            orientation="vertical"
+            orientation="horizontal"
             icon={<i className="fa fa-check"></i>}
-            squared={true}
+            squared={false}
           />
           <NewProgressBar1 activeStep={2}>
             <Step className="red">

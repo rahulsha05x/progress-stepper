@@ -4,9 +4,9 @@ export const Line = ({
   color,
   className = '',
 }: {
-  color: string;
-  className?: string;
-}) => {
+    color?: string;
+    className?: string;
+  }) => {
   return (
     <div
       className={`line ${className}`}
