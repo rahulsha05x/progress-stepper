@@ -10,6 +10,7 @@ interface Props {
     key?: string | number;
     progress?: number;
     orientation?: string;
+    squared?: boolean;
 }
 
 function renderProgressText(text: any) {
@@ -33,21 +34,32 @@ const NewProgressStep: React.FC<Props> = ({
     completed = false,
     className = '',
     progress = 0,
-    orientation = "horizontal"
+    orientation = "horizontal",
+    squared = false
 }) => {
-    let styles: any = {
+
+    let circleStyles: any = {
+        backgroundColor: color
+    }
+
+    let lineStyles: any = {
         backgroundColor: color
     }
     if (progress) {
-        styles["backgroundImage"] = `linear-gradient(to ${orientation === 'vertical' ? 'bottom' : 'right'}, ${color} ${progress}%, #b6b6b6 ${progress}%)`;
+        lineStyles["backgroundImage"] = `linear-gradient(to ${orientation === 'vertical' ? 'bottom' : 'right'}, ${color} ${progress}%, #b6b6b6 ${progress}%)`;
     }
+
+    if (squared) {
+        circleStyles["borderRadius"] = 0;
+    }
+
     return (
         <li className={`progress-step ${className}`}>
             <div className="progress-marker">
-                <div className="circle" style={{ backgroundColor: color }}>
+                <div className="circle" style={circleStyles}>
                     {completed && icon}
                 </div>
-                <div className="line" style={styles}></div>
+                <div className="line" style={lineStyles}></div>
             </div>
             <div className="progress-text">
                 {renderProgressText(text)}

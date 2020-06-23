@@ -80,6 +80,7 @@ function App() {
             color="#4B0082"
             orientation="vertical"
             icon={<i className="fa fa-check"></i>}
+            squared={true}
           />
         </div>
       </div>
