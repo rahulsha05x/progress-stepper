@@ -22,8 +22,8 @@
       .progress-marker {
         .line {
           width: 2px;
-          height: calc(100% - 20px);
-          top: 20px;
+          height: calc(100% - 22px);
+          top: 22px;
           left: 50%;
           margin-left: 0;
         }
@@ -55,6 +55,7 @@
         height: 16px;
         border-radius: 50%;
         background: #4b0082;
+        border: 1px solid;
         display: flex;
         color: #fff;
         padding: 2px;
@@ -62,12 +63,12 @@
         align-items: 'center';
       }
       .line {
-        width: calc(100% - 20px);
+        width: calc(100% - 22px);
         height: 2px;
         background-color: #4b0082;
         position: absolute;
         top: 50%;
-        margin-left: 20px;
+        margin-left: 22px;
       }
     }
     &:last-child {

@@ -86,11 +86,11 @@ function App() {
           /> */}
           <NewProgressBar
             steps={steps}
-            activeStep={3}
+            activeStep={4}
             color="#4B0082"
             orientation="horizontal"
             icon={<i className="fa fa-check"></i>}
-            squared={true}
+            squared={false}
           />
           <NewProgressBar1 activeStep={2}>
             <Step className="red">
