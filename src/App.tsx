@@ -194,25 +194,21 @@ function App() {
           </div>
           <div>
             <h4>Implementation with Custom Colors</h4>
-            <NewProgressBar1 activeStep={2}>
+            <NewProgressBar1 activeStep={3}>
               {steps.map((item, index) => {
                 return (
                   <Step className="red" key={item.id}>
                     <IconWrapper className="IconClass">
                       <Circle
                         completed={
-                          getStatus(activeStep, index) === 'is-completed'
-                            ? true
-                            : false
+                          getStatus(3, index) === 'is-completed' ? true : false
                         }
                         icon={<i className="fa fa-check"></i>}
                         color="green"
                       />
                       <Line
                         completed={
-                          getStatus(activeStep, index) === 'is-completed'
-                            ? true
-                            : false
+                          getStatus(3, index) === 'is-completed' ? true : false
                         }
                         color="yellow"
                       />
