@@ -178,6 +178,9 @@ function App() {
                 );
               })}
             </NewProgressBar1>
+          </div>
+          <div>
+            <h4>Stepper with buttons.</h4>
             <NewProgressBar1
               className="stepper-container"
               activeStep={activeStep}
