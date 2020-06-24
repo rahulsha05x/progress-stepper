@@ -233,7 +233,7 @@ function App() {
               {steps.map((item, index) => {
                 return (
                   <Step
-                    className={`${getStatus(activeStep, index)}`}
+                    className={`${getStatus(activeStep, index)} liholder`}
                     key={item.id}
                   >
                     <IconWrapper className="IconClass">
