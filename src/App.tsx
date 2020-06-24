@@ -31,22 +31,22 @@ function App() {
     steps: [
       {
         id: 1,
-        text: <div className="test">Register your account</div>,
+        text: <div className="test">Step 1</div>,
         status: 'Pending',
       },
       {
         id: 2,
-        text: 'Complete your wellness assessment',
+        text: 'Step 2',
         status: 'Pending',
       },
       {
         id: 3,
-        text: 'Link your account',
+        text: 'Step 3',
         status: 'Pending',
       },
       {
         id: 4,
-        text: 'Schedule your first call',
+        text: 'Step 4',
         status: 'Pending',
       },
     ],
@@ -58,7 +58,7 @@ function App() {
     }); */
 
     let tempStep = [...steps];
-    if (currentIndex === 0 && tempStep[currentIndex] ?.status === 'Pending') {
+    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
       tempStep[currentIndex].status = 'Current';
     } else {
       tempStep[currentIndex].status = 'Complete';
