@@ -14,7 +14,11 @@ import Line from './components/atoms/Line/Line';
 import IconWrapper from './components/molecules/IconContainer/IconWrapper';
 import TextWrapper from './components/molecules/TextWrapper/TextWrapper';
 import Step from './components/molecules/StepperItem/Step';
-import { stepsWithoutText, stepsWithText, stepsWithProgress } from './constants';
+import {
+  stepsWithoutText,
+  stepsWithText,
+  stepsWithProgress,
+} from './constants';
 import Button from './components/atoms/Button/Button';
 
 function App() {
@@ -52,7 +56,7 @@ function App() {
     }); */
 
     let tempStep = [...steps];
-    if (currentIndex === 0 && tempStep[currentIndex] ?.status === 'Pending') {
+    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
       tempStep[currentIndex].status = 'Current';
     } else {
       tempStep[currentIndex].status = 'Complete';
@@ -204,11 +208,14 @@ function App() {
                         icon={<i className="fa fa-check"></i>}
                         color="green"
                       />
-                      <Line completed={
-                        getStatus(activeStep, index) === 'is-completed'
-                          ? true
-                          : false
-                      } color="yellow" />
+                      <Line
+                        completed={
+                          getStatus(activeStep, index) === 'is-completed'
+                            ? true
+                            : false
+                        }
+                        color="yellow"
+                      />
                     </IconWrapper>
                     <TextWrapper>{item.text}</TextWrapper>
                   </Step>
@@ -240,7 +247,15 @@ function App() {
                         icon={<i className="fa fa-check"></i>}
                         color="green"
                       />
-                      <Line color="yellow" active={activeStep === index + 1} />
+                      <Line
+                        color="red"
+                        completed={
+                          getStatus(activeStep, index) === 'is-completed'
+                            ? true
+                            : false
+                        }
+                        active={activeStep === index + 1}
+                      />
                     </IconWrapper>
                     <TextWrapper>{item.text}</TextWrapper>
                     {activeStep === index + 1 && (
