@@ -42,15 +42,16 @@ This example demonstrate how to create a simple progress bar.
 
 ```jsx
 import React from "react";
-import { ProgressBar } from "react-progress-trac";
+import { ProgressBar } from "react-progress-tracker";
 
-class ProgressBar extends React.Component {
+class ProgressTracker extends React.Component {
   render() {
     return (
-      <ProgressBar
-        percent={75}
-        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
-      />
+        <ProgressBar
+            steps={[...new Array(4)].map((item, i) => ({ id: i + 1 }))}
+            activeStep={4}
+            color="#4B0082"
+        />
     );
   }
 }
@@ -63,7 +64,7 @@ This example demonstrate how to create your own progress bar with steps.
 ```jsx
 import React from "react";
 import "react-step-progress-bar/styles.css";
-import { ProgressBar, Step } from "react-step-progress-bar";
+import { ProgressBar, Step } from "react-progress-tracker";
 
 class StepProgressBar extends React.Component {
   render() {
@@ -114,7 +115,7 @@ class StepProgressBar extends React.Component {
       <th style="width: 100px;">name</th>
       <th style="width: 50px;">type</th>
       <th style="width: 50px;">default</th>
-      <th>required</th>
+      <th style="width: 50px;">required</th>
       <th>description</th>
     </tr>
   </thead>
