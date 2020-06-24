@@ -85,3 +85,19 @@
     }
   }
 }
+.stepper--btn {
+  height: 30px;
+  width: 90px;
+  &.--vertical {
+    margin-left: 80px;
+  }
+}
+.stepper-container {
+  background-color: #f8f8ff;
+  padding: 20px;
+}
+.progress-step {
+  &.liholder {
+    border-bottom: 1px solid yellow;
+  }
+}

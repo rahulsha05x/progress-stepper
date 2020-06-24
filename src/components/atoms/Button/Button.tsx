@@ -5,16 +5,25 @@ interface Props {
   className?: string;
   children: ReactNode;
   disabled?: boolean;
+  type?: string;
+  onClick?: any;
 }
-const Button: React.FC<Props> = ({
+const Button = ({
   className,
   children,
   disabled,
+  type,
+  onClick,
   ...others
-}) => {
-  const buttonClass = ['btn', className?.split(' ')];
+}: Props) => {
+  const buttonClass = `btn ${className}`;
   return (
-    <button className={buttonClass.join(' ')} disabled={disabled} {...others}>
+    <button
+      className={buttonClass}
+      disabled={disabled}
+      onClick={onClick}
+      {...others}
+    >
       {children}
     </button>
   );

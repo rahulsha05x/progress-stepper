@@ -15,6 +15,7 @@ import IconWrapper from './components/molecules/IconContainer/IconWrapper';
 import TextWrapper from './components/molecules/TextWrapper/TextWrapper';
 import Step from './components/molecules/StepperItem/Step';
 import { stepsWithoutText, stepsWithText, stepsWithProgress } from './constants';
+import Button from './components/atoms/Button/Button';
 
 function App() {
   const [progressBarData, setProgressData] = useState({
@@ -25,28 +26,28 @@ function App() {
       {
         id: 1,
         text: <div className="test">Register your account</div>,
-        status: 'Pending'
+        status: 'Pending',
       },
       {
         id: 2,
         text: 'Complete your wellness assessment',
-        status: 'Pending'
+        status: 'Pending',
       },
       {
         id: 3,
         text: 'Link your account',
-        status: 'Pending'
+        status: 'Pending',
       },
       {
         id: 4,
         text: 'Schedule your first call',
-        status: 'Pending'
+        status: 'Pending',
       },
     ],
   });
   let { headerText, steps } = progressBarData;
   const taskHandler = (e: any) => {
-    const currentIndex = 0;/* steps.findIndex((item) => {
+    const currentIndex = 0; /* steps.findIndex((item) => {
       return item.text === e;
     }); */
 
@@ -89,7 +90,12 @@ function App() {
       return 'Finished';
     }
   };
-  let activeStep = 2;
+  let [activeStep, setActiveStep] = useState(1);
+  let orientation = 'vertical';
+  const handleButtonClick = (text: string | any) => {
+    console.log('clicked', text);
+    setActiveStep((prev) => prev + 1);
+  };
   return (
     <div className="container">
       <div className="container__row">
@@ -205,6 +211,47 @@ function App() {
                       } color="yellow" />
                     </IconWrapper>
                     <TextWrapper>{item.text}</TextWrapper>
+                  </Step>
+                );
+              })}
+            </NewProgressBar1>
+          </div>
+          <div>
+            <h4>Stepper with buttons.</h4>
+            <NewProgressBar1
+              className="stepper-container"
+              activeStep={activeStep}
+              orientation={orientation}
+            >
+              {steps.map((item, index) => {
+                return (
+                  <Step
+                    className={`${getStatus(activeStep, index)}`}
+                    key={item.id}
+                  >
+                    <IconWrapper className="IconClass">
+                      <Circle
+                        completed={
+                          getStatus(activeStep, index) === 'is-completed'
+                            ? true
+                            : false
+                        }
+                        active={activeStep === index + 1}
+                        icon={<i className="fa fa-check"></i>}
+                        color="green"
+                      />
+                      <Line color="yellow" active={activeStep === index + 1} />
+                    </IconWrapper>
+                    <TextWrapper>{item.text}</TextWrapper>
+                    {activeStep === index + 1 && (
+                      <Button
+                        type="button"
+                        className={`btn stepper--btn --${orientation}`}
+                        onClick={() => handleButtonClick(item.text)}
+                      >
+                        Next
+                      </Button>
+                    )}
                   </Step>
                 );
               })}
