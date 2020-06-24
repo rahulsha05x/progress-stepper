@@ -17,9 +17,11 @@ export const Step = ({
 }: StepProps) => {
   const getChildren = () => {
     return React.Children.map(children, (child, index) => {
-      return React.cloneElement(child, {
-        itemIndex: index,
-      });
+      if (child) {
+        return React.cloneElement(child, {
+          itemIndex: index,
+        });
+      }
     });
   };
   const child = getChildren();

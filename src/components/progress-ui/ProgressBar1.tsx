@@ -5,11 +5,13 @@ export interface StepData {
   text?: string | object;
   status?: string;
   id: number;
+  className: string;
   progress?: number;
 }
 interface Props {
   steps: StepData[];
   activeStep: number;
+  className: string;
   orientation?: string;
   color?: string;
   content?: any;
@@ -29,9 +31,11 @@ export const getStatus = (activeStep: number, index: number) => {
 const NewProgressBar1: React.FC<any> = ({
   steps,
   activeStep,
+  align = 'center',
   orientation = 'horizontal',
   color,
   content,
+  className = '',
   children,
 }) => {
   let currentItemStatus: string;
@@ -47,7 +51,9 @@ const NewProgressBar1: React.FC<any> = ({
   const renderChild = renderChildren();
   return (
     <div>
-      <ul className={`progress-tracker --${orientation}`}>{renderChild}</ul>
+      <ul className={`progress-tracker --${orientation} ${className}`}>
+        {renderChild}
+      </ul>
     </div>
   );
 };
