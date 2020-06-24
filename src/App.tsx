@@ -225,18 +225,14 @@ function App() {
                     <IconWrapper className="IconClass">
                       <Circle
                         completed={
-                          getStatus(activeStep, index) === 'is-completed'
-                            ? true
-                            : false
+                          getStatus(3, index) === 'is-completed' ? true : false
                         }
                         icon={<i className="fa fa-check"></i>}
                         color="green"
                       />
                       <Line
                         completed={
-                          getStatus(activeStep, index) === 'is-completed'
-                            ? true
-                            : false
+                          getStatus(3, index) === 'is-completed' ? true : false
                         }
                         color="yellow"
                       />
@@ -257,7 +253,7 @@ function App() {
               {steps.map((item, index) => {
                 return (
                   <Step
-                    className={`${getStatus(activeStep, index)}`}
+                    className={`${getStatus(activeStep, index)} liholder`}
                     key={item.id}
                   >
                     <IconWrapper className="IconClass">
