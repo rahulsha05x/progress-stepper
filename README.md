@@ -138,7 +138,7 @@ class StepProgressBar extends React.Component {
       <td>array of steps</td>
       <td></td>
       <td>yes</td>
-      <td>Step data is of the type {text?:  string  |  object; status?:  string; id:number;progress?:  number;}</td>
+      <td>Step data is of the type {text?:  string  |  object, status?:  string, id:number, progress?:  number, progress?:  number, color?:  string, icon?:  string  |  object}</td>
     </tr>
     <tr>
       <td>orientation</td>
@@ -192,40 +192,68 @@ class StepProgressBar extends React.Component {
       <td>Adds a class to the step component</td>
     </tr>
     <tr>
-      <td>position</td>
+      <td>activeStep</td>
       <td>number</td>
-      <td></td>
-      <td></td>
-      <td>The position in percentage of the Step on the ProgressBar</td>
+      <td>1</td>
+	  <td>yes</td>
+      <td>The current active step</td>
     </tr>
     <tr>
-      <td>index</td>
+      <td>orientation</td>
+      <td>string</td>
+      <td>horizontal</td>
+      <td>no</td>
+      <td>This prop is used to horizontally or vertically align the stepper component and display the steps accordingly</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>string</td>
+      <td>#ccc</td>
+      <td>no</td>
+      <td>This props is used directly on the CSS background property of the filled part of the Progress Tracker</td>
+    </tr>
+    <tr>
+      <td>icon</td>
+      <td>string|React Element</td>
+      <td>&lt;i className="fa fa-check"></i></td>
+      <td>no</td>
+      <td>The icon that indicates the successful completion of a step</td>
+    </tr>
+    <tr>
+      <td>squared</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>no</td>
+      <td>To show the progress steps as square</td>
+    </tr>
+    <tr>
+     <td>active</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>no</td>
+      <td>To show if the step is currently active</td>
+	</tr>
+	<tr>
+     <td>completed</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>no</td>
+      <td>To show if the step is completed</td>
+	</tr>
+	<tr>
+     <td>progress</td>
       <td>number</td>
+      <td>0</td>
+      <td>no</td>
+      <td>To show the current progress of the step</td>
+	</tr>
+	<tr>
+     <td>text</td>
+      <td>string | React Node</td>
       <td></td>
-      <td></td>
-      <td>The index of the Step in the ProgressBar</td>
-    </tr>
-    <tr>
-      <td>children</td>
-      <td>function</td>
-      <td></td>
-      <td></td>
-      <td>The function used to render the content of the Step</td>
-    </tr>
-    <tr>
-      <td>transition</td>
-      <td>string</td>
-      <td></td>
-      <td></td>
-      <td>Use one of the built-ins transitions</td>
-    </tr>
-    <tr>
-      <td>transitionDuration (in ms)</td>
-      <td>string</td>
-      <td>300</td>
-      <td></td>
-      <td>The duration of the transition</td>
-    </tr>
+      <td>no</td>
+      <td>To show the text corresponding to a particular step</td>
+	</tr>
   </tbody>
 </table>
 
@@ -235,7 +263,6 @@ MIT
 
 ---
 
-> GitHub [@pierreericgarcia](https://github.com/pierreericgarcia) &nbsp;&middot;&nbsp;
-> Twitter [@pierrericgarcia](https://twitter.com/pierrericgarcia) &nbsp;&middot;&nbsp;
+> GitHub [@shashwatgoyal](https://github.com/shashwat-goyal) , [@rahulsharma](https://github.com/rahulsha05x)&nbsp;&middot;&nbsp;
 > LinkedIn [@pierre-eric-garcia](https://www.linkedin.com/in/pierre-eric-garcia) &nbsp;&middot;&nbsp;
 > Medium [@pierrericgarcia](https://medium.com/@pierrericgarcia)
