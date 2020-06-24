@@ -56,7 +56,7 @@ const NewProgressStep: React.FC<Props> = ({
                     color={color}
                     squared={squared}
                 />
-                <Line active={active} progress={progress} color={color} />
+                <Line active={active} completed={completed} progress={progress} color={color} />
             </IconWrapper>
             <TextWrapper>{renderProgressText(text)}</TextWrapper>
         </Step>

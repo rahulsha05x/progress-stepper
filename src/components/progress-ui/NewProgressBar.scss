@@ -61,7 +61,10 @@
         color: #fff;
         padding: 2px;
         justify-content: center;
-        align-items: 'center';
+        align-items: center;
+        i {
+          font-size: 14px;
+        }
       }
       .line {
         width: calc(100% - 22px);

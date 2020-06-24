@@ -39,3 +39,30 @@ export const stepsWithText = [
       status: 'Pending'
     },
 ]
+
+export const stepsWithProgress = [
+    {
+      id: 1,
+      text: "Register your account",
+      status: 'Pending',
+      progress: 100
+    },
+    {
+      id: 2,
+      text: 'Complete your wellness assessment', 
+      status: 'Pending',
+      progress: 100
+    },
+    {
+      id: 3,
+      text: 'Link your account', 
+      status: 'Pending',
+      progress: 50
+    },
+    {
+      id: 4,
+      text: 'Schedule your first call', 
+      status: 'Pending',
+      progress: 0
+    },
+]

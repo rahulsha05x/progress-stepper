@@ -6,20 +6,22 @@ export const Line = ({
   orientation = 'horizontal',
   progress,
   active,
+  completed
 }: {
-  color: string;
-  orientation?: string;
-  progress?: string | number;
-  className?: string;
-  active?: boolean;
-}) => {
+    color: string;
+    orientation?: string;
+    progress?: string | number;
+    className?: string;
+    active?: boolean;
+    completed?: boolean;
+  }) => {
   const progressDirection =
     orientation === 'vertical' ? 'to bottom' : 'to right';
   const inactive = '#b6b6b6';
   const exp = `${progressDirection}, ${color} ${progress}%, ${inactive} ${progress}%`;
 
   let styles: any = {
-    backgroundColor: active ? '#ccc' : color,
+    backgroundColor: active || !completed ? '#ccc' : color,
   };
   if (progress) {
     styles['backgroundImage'] = `linear-gradient(${exp})`;

@@ -14,7 +14,7 @@ import Line from './components/atoms/Line/Line';
 import IconWrapper from './components/molecules/IconContainer/IconWrapper';
 import TextWrapper from './components/molecules/TextWrapper/TextWrapper';
 import Step from './components/molecules/StepperItem/Step';
-import { stepsWithoutText, stepsWithText } from './constants';
+import { stepsWithoutText, stepsWithText, stepsWithProgress } from './constants';
 
 function App() {
   const [progressBarData, setProgressData] = useState({
@@ -151,6 +151,39 @@ function App() {
             />
           </div>
           <div>
+            <h4>Default Colored Markers</h4>
+            <NewProgressBar
+              steps={stepsWithoutText}
+              activeStep={2}
+              orientation="horizontal"
+              icon={<i className="fa fa-check"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Custom Icon Markers</h4>
+            <NewProgressBar
+              steps={stepsWithoutText}
+              activeStep={2}
+              orientation="horizontal"
+              color="#4B0082"
+              icon={<i className="fa fa-times"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Custom Step Progress</h4>
+            <NewProgressBar
+              steps={stepsWithProgress}
+              activeStep={3}
+              orientation="horizontal"
+              color="#4B0082"
+              icon={<i className="fa fa-times"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Implementation with Custom Colors</h4>
             <NewProgressBar1 activeStep={2}>
               {steps.map((item, index) => {
                 return (
@@ -165,7 +198,11 @@ function App() {
                         icon={<i className="fa fa-check"></i>}
                         color="green"
                       />
-                      <Line color="yellow" />
+                      <Line completed={
+                        getStatus(activeStep, index) === 'is-completed'
+                          ? true
+                          : false
+                      } color="yellow" />
                     </IconWrapper>
                     <TextWrapper>{item.text}</TextWrapper>
                   </Step>
