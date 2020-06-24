@@ -12,6 +12,7 @@ import Line from './components/atoms/Line/Line';
 import IconWrapper from './components/molecules/IconContainer/IconWrapper';
 import TextWrapper from './components/molecules/TextWrapper/TextWrapper';
 import Step from './components/molecules/StepperItem/Step';
+import { stepsWithoutText, stepsWithText } from './constants';
 
 function App() {
   const [progressBarData, setProgressData] = useState({
@@ -22,18 +23,30 @@ function App() {
       {
         id: 1,
         text: <div className="test">Register your account</div>,
-        status: 'Pending',
+        status: 'Pending'
       },
-      { id: 2, text: 'Complete your wellness assessment', status: 'Pending' },
-      { id: 3, text: 'Link your account', status: 'Pending' },
-      { id: 4, text: 'Schedule your first call', status: 'Pending' },
+      {
+        id: 2,
+        text: 'Complete your wellness assessment',
+        status: 'Pending'
+      },
+      {
+        id: 3,
+        text: 'Link your account',
+        status: 'Pending'
+      },
+      {
+        id: 4,
+        text: 'Schedule your first call',
+        status: 'Pending'
+      },
     ],
   });
   let { headerText, steps } = progressBarData;
   const taskHandler = (e: any) => {
-    const currentIndex = steps.findIndex((item) => {
+    const currentIndex = 0;/* steps.findIndex((item) => {
       return item.text === e;
-    });
+    }); */
 
     let tempStep = [...steps];
     if (currentIndex === 0 && tempStep[currentIndex] ?.status === 'Pending') {
@@ -78,46 +91,90 @@ function App() {
     <div className="container">
       <div className="container__row">
         <div className="container__col-sm-12 container__col-md-12">
-          {/* <ProgressBar
-            headerText={headerText}
-            status={checkStatus(progressBarData)}
-            steps={steps}
-            taskClickHandler={taskHandler}
-          /> */}
-          <NewProgressBar
-            steps={steps}
-            activeStep={3}
-            color="#4B0082"
-            orientation="horizontal"
-            icon={<i className="fa fa-check"></i>}
-            squared={false}
-          />
-          <NewProgressBar1 activeStep={2}>
-            <Step className="red">
-              <IconWrapper className="IconClass">
-                <Circle
-                  completed
-                  icon={<i className="fa fa-check"></i>}
-                  color="green"
-                  squared
-                />
-                <Line color="yellow" progress={'50'} />
-              </IconWrapper>
-              <TextWrapper>all right11</TextWrapper>
-            </Step>
-            <Step className="green">
-              <IconWrapper className="IconClass">
-                <Circle
-                  completed
-                  icon={<i className="fa fa-check"></i>}
-                  color="yellow"
-                  squared
-                />
-                <Line color="yellow" />
-              </IconWrapper>
-              <TextWrapper>all right1</TextWrapper>
-            </Step>
-          </NewProgressBar1>
+          <h2 className="text-center">React Progress Tracker</h2>
+          <div>
+            <h4>Basic implementation</h4>
+            <NewProgressBar
+              steps={stepsWithoutText}
+              activeStep={4}
+              color="#4B0082"
+              orientation="horizontal"
+              icon={<i className="fa fa-check"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Steps with Text Horizontal Alignment</h4>
+            <NewProgressBar
+              steps={stepsWithText}
+              activeStep={4}
+              color="#4B0082"
+              orientation="horizontal"
+              icon={<i className="fa fa-check"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Vertical implementation</h4>
+            <NewProgressBar
+              steps={stepsWithoutText}
+              activeStep={4}
+              color="#4B0082"
+              orientation="vertical"
+              icon={<i className="fa fa-check"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Vertical implementation With Text</h4>
+            <NewProgressBar
+              steps={stepsWithText}
+              activeStep={4}
+              color="#4B0082"
+              orientation="vertical"
+              icon={<i className="fa fa-check"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Squared Markers</h4>
+            <NewProgressBar
+              steps={stepsWithoutText}
+              activeStep={4}
+              color="#4B0082"
+              orientation="horizontal"
+              icon={<i className="fa fa-check"></i>}
+              squared={true}
+            />
+          </div>
+          <div>
+            <NewProgressBar1 activeStep={2}>
+              <Step className="red">
+                <IconWrapper className="IconClass">
+                  <Circle
+                    completed
+                    icon={<i className="fa fa-check"></i>}
+                    color="green"
+                    squared
+                  />
+                  <Line color="yellow" progress={'50'} />
+                </IconWrapper>
+                <TextWrapper>all right11</TextWrapper>
+              </Step>
+              <Step className="green">
+                <IconWrapper className="IconClass">
+                  <Circle
+                    completed
+                    icon={<i className="fa fa-check"></i>}
+                    color="yellow"
+                    squared
+                  />
+                  <Line color="yellow" />
+                </IconWrapper>
+                <TextWrapper>all right1</TextWrapper>
+              </Step>
+            </NewProgressBar1>
+          </div>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@ export const Circle = ({
     children?: any;
     active?: boolean;
   }) => {
+  console.log(color, "color")
   const styles = {
     background: completed ? color : 'none',
     borderRadius: squared ? '0px' : '50%',

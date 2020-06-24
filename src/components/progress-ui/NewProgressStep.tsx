@@ -31,7 +31,7 @@ function renderProgressText(text: any) {
 const NewProgressStep: React.FC<Props> = ({
     text,
     activeStep,
-    color = 'blue',
+    color = '#ccc',
     icon,
     completed = false,
     className = '',

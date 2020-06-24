@@ -6,7 +6,7 @@
 
 .progress-tracker {
   @include flex-display();
-  margin: 60px auto;
+  margin: 50px auto;
   padding: 0;
   list-style: none;
   &.--vertical {
@@ -37,6 +37,7 @@
       }
       .progress-text {
         padding: 0 12px 24px 12px;
+        min-height: 40px;
       }
     }
   }

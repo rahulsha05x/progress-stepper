@@ -31,10 +31,10 @@ function renderProgressText(step: StepData) {
 
 const NewProgressBar: React.FC<Props> = ({
     steps,
-    activeStep,
+    activeStep = 1,
     orientation = "horizontal",
     color,
-    icon,
+    icon = <i className="fa fa-check"></i>,
     squared = false
 }) => {
 
