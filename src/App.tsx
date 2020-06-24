@@ -6,7 +6,9 @@ import ProgressBar, {
 } from './components/molecules/ProgressBar/ProgressBar';
 
 import NewProgressBar from './components/progress-ui/NewProgressBar';
-import NewProgressBar1 from './components/progress-ui/ProgressBar1';
+import NewProgressBar1, {
+  getStatus,
+} from './components/progress-ui/ProgressBar1';
 import Circle from './components/atoms/Circle/CircleIcon';
 import Line from './components/atoms/Line/Line';
 import IconWrapper from './components/molecules/IconContainer/IconWrapper';
@@ -87,6 +89,7 @@ function App() {
       return 'Finished';
     }
   };
+  let activeStep = 2;
   return (
     <div className="container">
       <div className="container__row">
@@ -149,30 +152,25 @@ function App() {
           </div>
           <div>
             <NewProgressBar1 activeStep={2}>
-              <Step className="red">
-                <IconWrapper className="IconClass">
-                  <Circle
-                    completed
-                    icon={<i className="fa fa-check"></i>}
-                    color="green"
-                    squared
-                  />
-                  <Line color="yellow" progress={'50'} />
-                </IconWrapper>
-                <TextWrapper>all right11</TextWrapper>
-              </Step>
-              <Step className="green">
-                <IconWrapper className="IconClass">
-                  <Circle
-                    completed
-                    icon={<i className="fa fa-check"></i>}
-                    color="yellow"
-                    squared
-                  />
-                  <Line color="yellow" />
-                </IconWrapper>
-                <TextWrapper>all right1</TextWrapper>
-              </Step>
+              {steps.map((item, index) => {
+                return (
+                  <Step className="red" key={item.id}>
+                    <IconWrapper className="IconClass">
+                      <Circle
+                        completed={
+                          getStatus(activeStep, index) === 'is-completed'
+                            ? true
+                            : false
+                        }
+                        icon={<i className="fa fa-check"></i>}
+                        color="green"
+                      />
+                      <Line color="yellow" />
+                    </IconWrapper>
+                    <TextWrapper>{item.text}</TextWrapper>
+                  </Step>
+                );
+              })}
             </NewProgressBar1>
           </div>
         </div>

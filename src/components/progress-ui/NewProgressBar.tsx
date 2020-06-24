@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NewProgressStep from './NewProgressStep';
+import NewProgressBar1 from './ProgressBar1';
 
 export interface StepData {
     text?: string | object;
@@ -17,11 +18,8 @@ interface Props {
 }
 
 function renderProgressText(step: StepData) {
-
     if (typeof step.text === 'string') {
-        return <div>
-            {step.text}
-        </div>
+        return <div>{step.text}</div>;
     }
 
     if (React.isValidElement(step.text)) {
@@ -37,39 +35,35 @@ const NewProgressBar: React.FC<Props> = ({
     icon = <i className="fa fa-check"></i>,
     squared = false
 }) => {
-
     return (
         <div>
-            <ul className={`progress-tracker --${orientation}`}>
-                {
-                    steps.map((step: StepData, index: number) => {
-                        let stepClass = '';
-                        const completed = activeStep > index + 1;
-                        if (completed) {
-                            stepClass = "is-completed";
-                        }
-                        if (activeStep === index + 1) {
-                            stepClass = "is-active";
-                        }
+            <NewProgressBar1 activeStep={activeStep}>
+                {steps.map((step: StepData, index: number) => {
+                    let stepClass = '';
+                    const completed = activeStep > index + 1;
+                    if (completed) {
+                        stepClass = 'is-completed';
+                    }
+                    if (activeStep === index + 1) {
+                        stepClass = 'is-active';
+                    }
 
-                        return (
-                            <NewProgressStep
-                                key={step.id || index}
-                                {...step}
-                                className={stepClass}
-                                activeStep={activeStep}
-                                completed={completed}
-                                active={activeStep === index + 1}
-                                color={color}
-                                icon={icon}
-                                orientation={orientation}
-                                squared={squared}
-                            />
-                        )
-                    })
-                }
-
-            </ul>
+                    return (
+                        <NewProgressStep
+                            key={step.id || index}
+                            {...step}
+                            className={stepClass}
+                            activeStep={activeStep}
+                            completed={completed}
+                            active={activeStep === index + 1}
+                            color={color}
+                            icon={icon}
+                            orientation={orientation}
+                            squared={squared}
+                        />
+                    );
+                })}
+            </NewProgressBar1>
         </div>
     );
 };

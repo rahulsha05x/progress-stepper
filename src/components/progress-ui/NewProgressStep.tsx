@@ -40,37 +40,29 @@ const NewProgressStep: React.FC<Props> = ({
     squared = false,
     active = false
 }) => {
-    let circleStyles: any = {
-        backgroundColor: color,
-    };
-
-    let lineStyles: any = {
-        backgroundColor: color,
-    };
-    if (progress) {
-        lineStyles['backgroundImage'] = `linear-gradient(to ${
-            orientation === 'vertical' ? 'bottom' : 'right'
-            }, ${color} ${progress}%, #b6b6b6 ${progress}%)`;
-    }
-
-    if (squared) {
-        circleStyles['borderRadius'] = 0;
-    }
-
+    console.log('Completed', completed);
     return (
         <Step
             color={color}
             completed={completed}
             content={icon}
-            className={`progress-step ${className}`}
+            className={className}
         >
             <IconWrapper>
-                <Circle active={active} completed={completed} icon={icon} color={color} squared={squared} />
+                <Circle
+                    active={active}
+                    completed={completed}
+                    icon={icon}
+                    color={color}
+                    squared={squared}
+                />
                 <Line active={active} progress={progress} color={color} />
             </IconWrapper>
             <TextWrapper>{renderProgressText(text)}</TextWrapper>
         </Step>
     );
 };
-
+NewProgressStep.defaultProps = {
+    completed: false,
+};
 export default NewProgressStep;

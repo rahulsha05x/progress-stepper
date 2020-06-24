@@ -2,7 +2,7 @@ import React from 'react';
 
 const IconWrapper = ({
   children,
-  className,
+  className = '',
 }: {
   children: any;
   className?: string;
