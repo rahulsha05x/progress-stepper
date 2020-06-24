@@ -37,7 +37,7 @@ const NewProgressBar: React.FC<Props> = ({
 }) => {
     return (
         <div>
-            <NewProgressBar1 activeStep={activeStep}>
+            <NewProgressBar1 activeStep={activeStep} orientation={orientation}>
                 {steps.map((step: StepData, index: number) => {
                     let stepClass = '';
                     const completed = activeStep > index + 1;
