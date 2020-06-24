@@ -13,10 +13,14 @@ function App() {
       'Create a plan to meet your short and long term investment goals.',
     status: 'Pending',
     steps: [
-      { id: 1, text: <div className="test">Register your account</div>, status: 'Pending' },
-      { id: 2, text: 'Complete your wellness assessment', status: 'Pending' },
-      { id: 3, text: 'Link your account', status: 'Pending' },
-      { id: 4, text: 'Schedule your first call', status: 'Pending' },
+      {
+        id: 1,
+        text: <div className="test">Register your account</div>,
+        status: 'Pending',
+      },
+      { id: 2, text: 'Step 2', status: 'Pending' },
+      { id: 3, text: 'Step 3', status: 'Pending' },
+      { id: 4, text: 'Step 4', status: 'Pending' },
     ],
   });
   let { headerText, steps } = progressBarData;
@@ -26,7 +30,7 @@ function App() {
     });
 
     let tempStep = [...steps];
-    if (currentIndex === 0 && tempStep[currentIndex] ?.status === 'Pending') {
+    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
       tempStep[currentIndex].status = 'Current';
     } else {
       tempStep[currentIndex].status = 'Complete';
