@@ -18,6 +18,8 @@ import {
   stepsWithoutText,
   stepsWithText,
   stepsWithProgress,
+  stepsWithColors,
+  stepsWithCustomIcons,
 } from './constants';
 import Button from './components/atoms/Button/Button';
 
@@ -56,7 +58,7 @@ function App() {
     }); */
 
     let tempStep = [...steps];
-    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
+    if (currentIndex === 0 && tempStep[currentIndex] ?.status === 'Pending') {
       tempStep[currentIndex].status = 'Current';
     } else {
       tempStep[currentIndex].status = 'Complete';
@@ -188,12 +190,34 @@ function App() {
               activeStep={3}
               orientation="horizontal"
               color="#4B0082"
-              icon={<i className="fa fa-times"></i>}
+              icon={<i className="fa fa-check"></i>}
               squared={false}
             />
           </div>
           <div>
-            <h4>Implementation with Custom Colors</h4>
+            <h4>Steps with different colors</h4>
+            <NewProgressBar
+              steps={stepsWithColors}
+              activeStep={5}
+              orientation="horizontal"
+              color="#4B0082"
+              icon={<i className="fa fa-check"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Steps with different icons</h4>
+            <NewProgressBar
+              steps={stepsWithCustomIcons}
+              activeStep={5}
+              orientation="horizontal"
+              color="#4B0082"
+              icon={<i className="fa fa-check"></i>}
+              squared={false}
+            />
+          </div>
+          <div>
+            <h4>Implementation with Custom Color</h4>
             <NewProgressBar1 activeStep={2}>
               {steps.map((item, index) => {
                 return (

@@ -7,6 +7,8 @@ export interface StepData {
     status?: string;
     id: number;
     progress?: number;
+    color?: string;
+    icon?: string | object;
 }
 interface Props {
     steps: StepData[];
@@ -56,8 +58,8 @@ const NewProgressBar: React.FC<Props> = ({
                             activeStep={activeStep}
                             completed={completed}
                             active={activeStep === index + 1}
-                            color={color}
-                            icon={icon}
+                            color={step.color || color}
+                            icon={step.icon || icon}
                             orientation={orientation}
                             squared={squared}
                         />
