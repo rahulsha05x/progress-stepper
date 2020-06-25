@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NewProgressStep from './NewProgressStep';
 import NewProgressBar1 from './ProgressBar1';
 
@@ -17,16 +17,6 @@ interface Props {
     color?: string;
     icon?: any;
     squared?: boolean;
-}
-
-function renderProgressText(step: StepData) {
-    if (typeof step.text === 'string') {
-        return <div>{step.text}</div>;
-    }
-
-    if (React.isValidElement(step.text)) {
-        return step.text;
-    }
 }
 
 const NewProgressBar: React.FC<Props> = ({

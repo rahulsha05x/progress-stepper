@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import NewProgressStep from './NewProgressStep';
+import React from 'react';
 
 export interface StepData {
   text?: string | object;
