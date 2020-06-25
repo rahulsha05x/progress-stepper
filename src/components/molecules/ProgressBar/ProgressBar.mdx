@@ -1,0 +1,20 @@
+
+---
+React Progress Tracker
+---
+
+import { Playground } from 'docz';
+import ProgressBar from './ProgressBar';
+import './ProgressBar.scss';
+
+# Progress Tracker
+
+<Playground>
+    <ProgressBar
+        steps={[{"id": 1},{ "id": 2 },{ "id": 3},{ "id": 4}]}
+        activeStep={5}
+        orientation="horizontal"
+        color="#4B0082"
+        squared={false}
+    />
+</Playground>

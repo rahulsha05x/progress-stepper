@@ -1,6 +1,6 @@
 import React from 'react';
-import NewProgressStep from './NewProgressStep';
-import NewProgressBar1 from './ProgressBar1';
+import ProgressStep from './ProgressStep';
+import ProgressBarWrapper from './ProgressBarWrapper';
 
 export interface StepData {
     text?: string | object;
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const NewProgressBar: React.FC<Props> = ({
-    steps,
+    steps = [],
     activeStep = 1,
     orientation = "horizontal",
     color,
@@ -29,7 +29,7 @@ const NewProgressBar: React.FC<Props> = ({
 }) => {
     return (
         <div>
-            <NewProgressBar1 activeStep={activeStep} orientation={orientation}>
+            <ProgressBarWrapper activeStep={activeStep} orientation={orientation}>
                 {steps.map((step: StepData, index: number) => {
                     let stepClass = '';
                     const completed = activeStep > index + 1;
@@ -41,7 +41,7 @@ const NewProgressBar: React.FC<Props> = ({
                     }
 
                     return (
-                        <NewProgressStep
+                        <ProgressStep
                             key={step.id || index}
                             {...step}
                             className={stepClass}
@@ -55,7 +55,7 @@ const NewProgressBar: React.FC<Props> = ({
                         />
                     );
                 })}
-            </NewProgressBar1>
+            </ProgressBarWrapper>
         </div>
     );
 };
