@@ -1,0 +1,37 @@
+import { Playground } from 'docz';
+import ProgressBar from '../components/molecules/ProgressBar/ProgressBar';
+
+# Custom Colors for each Step
+
+<Playground>
+    <ProgressBar
+        steps={[
+            {
+                id: 1,
+                text: 'Step 1',
+                status: 'Pending',
+                color: 'red',
+            },
+            {
+                id: 2,
+                text: 'Step 2',
+                status: 'Pending',
+                color: 'blue',
+            },
+            {
+                id: 3,
+                text: 'Step 3',
+                status: 'Pending',
+                color: 'green',
+            },
+            {
+                id: 4,
+                text: 'Step 4',
+                status: 'Pending',
+                color: 'yellow',
+            },
+        ]}
+        activeStep={4}
+        color="#4B0082"
+    />
+</Playground>
