@@ -7,7 +7,11 @@ const IconWrapper = ({
   children: any;
   className?: string;
 }) => {
-  return <div className={`progress-marker ${className}`}>{children}</div>;
+  return (
+    <div data-testid="icon-wrapper" className={`progress-marker ${className}`}>
+      {children}
+    </div>
+  );
 };
 IconWrapper.displayName = IconWrapper;
 export default IconWrapper;

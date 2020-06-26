@@ -6,15 +6,15 @@ export const Line = ({
   orientation = 'horizontal',
   progress,
   active,
-  completed
+  completed,
 }: {
-    color: string;
-    orientation?: string;
-    progress?: string | number;
-    className?: string;
-    active?: boolean;
-    completed?: boolean;
-  }) => {
+  color: string;
+  orientation?: string;
+  progress?: string | number;
+  className?: string;
+  active?: boolean;
+  completed?: boolean;
+}) => {
   const progressDirection =
     orientation === 'vertical' ? 'to bottom' : 'to right';
   const inactive = '#b6b6b6';
@@ -26,7 +26,13 @@ export const Line = ({
   if (progress) {
     styles['backgroundImage'] = `linear-gradient(${exp})`;
   }
-  return <div className={`line ${className}`} style={styles}></div>;
+  return (
+    <div
+      data-testid="line"
+      className={`line ${className}`}
+      style={styles}
+    ></div>
+  );
 };
 Line.displayName = 'Line';
 export default Line;
