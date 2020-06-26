@@ -1,5 +1,5 @@
 {
-  "name": "progress-app-1",
+  "name": "react-progress-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docz:dev": "docz dev --typescript --port=8000",
+    "docz:build": "docz build",
+    "docz:serve": "docz build && docz serve"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,6 +42,8 @@
     ]
   },
   "devDependencies": {
+    "docz": "^2.3.1",
+    "gatsby-plugin-sass": "^2.3.6",
     "node-sass": "^4.14.1"
   }
 }

@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './App.scss';
 
-import { StepData } from './components/molecules/ProgressBar/ProgressBar';
-
-import ProgressBar from './components/progress-ui/ProgressBar';
-import NewProgressBar1, {
+import ProgressBar from './components/molecules/ProgressBar/ProgressBar';
+import ProgressBarWrapper, {
   getStatus,
-} from './components/progress-ui/ProgressBarContainer';
+} from './components/molecules/ProgressBar/ProgressBarWrapper';
 import Circle from './components/atoms/Circle/CircleIcon';
 import Line from './components/atoms/Line/Line';
 import IconWrapper from './components/molecules/IconContainer/IconWrapper';
@@ -22,7 +20,7 @@ import {
 import Button from './components/atoms/Button/Button';
 
 function App() {
-  const [progressBarData, setProgressData] = useState({
+  const [progressBarData] = useState({
     headerText:
       'Create a plan to meet your short and long term investment goals.',
     status: 'Pending',
@@ -49,51 +47,8 @@ function App() {
       },
     ],
   });
-  let { headerText, steps } = progressBarData;
-  const taskHandler = (e: any) => {
-    const currentIndex = 0; /* steps.findIndex((item) => {
-      return item.text === e;
-    }); */
+  let { steps } = progressBarData;
 
-    let tempStep = [...steps];
-    if (currentIndex === 0 && tempStep[currentIndex]?.status === 'Pending') {
-      tempStep[currentIndex].status = 'Current';
-    } else {
-      tempStep[currentIndex].status = 'Complete';
-      if (currentIndex + 1 < steps.length) {
-        tempStep[currentIndex + 1].status = 'Current';
-      }
-    }
-
-    setProgressData({
-      ...progressBarData,
-      steps: tempStep,
-    });
-  };
-  const checkStatus = ({ steps }: { steps: StepData[] }) => {
-    const taskStatus = {
-      total: steps.length,
-      pending: 0,
-      completed: 0,
-    };
-    steps.forEach((item) => {
-      if (item.status === 'Pending') {
-        taskStatus.pending += 1;
-      }
-      if (item.status === 'Complete') {
-        taskStatus.completed += 1;
-      }
-    });
-    if (taskStatus.total === taskStatus.pending) {
-      return 'Not Started';
-    }
-    if (taskStatus.completed > 0 && taskStatus.completed < taskStatus.total) {
-      return 'In Progress';
-    }
-    if (taskStatus.completed === taskStatus.total && taskStatus.pending === 0) {
-      return 'Finished';
-    }
-  };
   let [activeStep, setActiveStep] = useState(1);
   let orientation = 'vertical';
   const handleButtonClick = (text: string | any) => {
@@ -216,7 +171,7 @@ function App() {
           </div>
           <div>
             <h4>Implementation with Custom Color</h4>
-            <NewProgressBar1 activeStep={2}>
+            <ProgressBarWrapper activeStep={2}>
               {steps.map((item, index) => {
                 return (
                   <Step className="red" key={item.id}>
@@ -239,11 +194,11 @@ function App() {
                   </Step>
                 );
               })}
-            </NewProgressBar1>
+            </ProgressBarWrapper>
           </div>
           <div>
             <h4>Stepper with buttons.</h4>
-            <NewProgressBar1
+            <ProgressBarWrapper
               className="stepper-container"
               activeStep={activeStep}
               orientation={orientation}
@@ -288,7 +243,7 @@ function App() {
                   </Step>
                 );
               })}
-            </NewProgressBar1>
+            </ProgressBarWrapper>
           </div>
         </div>
       </div>

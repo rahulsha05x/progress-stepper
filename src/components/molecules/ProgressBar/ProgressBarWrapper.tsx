@@ -28,7 +28,7 @@ export const getStatus = (activeStep: number, index: number) => {
   }
   return stepClass;
 };
-const ProgressBarContainer: React.FC<any> = ({
+const ProgressBarWrapper: React.FC<any> = ({
   steps,
   activeStep,
   align = 'center',
@@ -58,4 +58,4 @@ const ProgressBarContainer: React.FC<any> = ({
   );
 };
 
-export default ProgressBarContainer;
+export default ProgressBarWrapper;

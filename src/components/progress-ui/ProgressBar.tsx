@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import ProgressStep from './ProgressStep';
-import ProgressBarContainer from './ProgressBarContainer';
+
+import ProgressBarWrapper from '../molecules/ProgressBar/ProgressBarWrapper';
+import ProgressStep from '../molecules/ProgressBar/ProgressStep';
 
 export interface StepData {
   text?: string | object;
@@ -39,7 +40,7 @@ const ProgressBar: React.FC<Props> = ({
 }) => {
   return (
     <div>
-      <ProgressBarContainer activeStep={activeStep} orientation={orientation}>
+      <ProgressBarWrapper activeStep={activeStep} orientation={orientation}>
         {steps.map((step: StepData, index: number) => {
           let stepClass = '';
           const completed = activeStep > index + 1;
@@ -65,7 +66,7 @@ const ProgressBar: React.FC<Props> = ({
             />
           );
         })}
-      </ProgressBarContainer>
+      </ProgressBarWrapper>
     </div>
   );
 };

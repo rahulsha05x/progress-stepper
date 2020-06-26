@@ -1,0 +1,14 @@
+import { Playground } from 'docz';
+import ProgressBar from '../components/molecules/ProgressBar/ProgressBar';
+
+# Custom Icon Markers
+
+<Playground>
+    <ProgressBar
+        steps={[{"id": 1},{ "id": 2 },{ "id": 3},{ "id": 4}]}
+        activeStep={4}
+        orientation="vertical"
+        color="#4B0082"
+        icon={<i className="fa fa-times"></i>}
+    />
+</Playground>

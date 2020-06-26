@@ -1,81 +1,63 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ProgressStep from './ProgressStep';
+import ProgressBarWrapper from './ProgressBarWrapper';
 
-import StepItem from '../StepItem/StepItem';
-import useGetCompleted from './useGetCompleted';
-import { useButtonText } from '../../../hooks/useButtonText';
 export interface StepData {
-  text?: string;
+  text?: string | object;
   status?: string;
   id: number;
+  progress?: number;
+  color?: string;
+  icon?: string | object;
 }
 interface Props {
-  headerText: string;
-  status?: string;
   steps: StepData[];
-  taskClickHandler: (e: any) => void;
+  activeStep: number;
+  orientation?: string;
+  color?: string;
+  icon?: any;
+  squared?: boolean;
 }
+
 const ProgressBar: React.FC<Props> = ({
-  headerText,
-  status,
-  steps,
-  taskClickHandler,
+  steps = [],
+  activeStep = 1,
+  orientation = 'horizontal',
+  color,
+  icon = <i className="fa fa-check"></i>,
+  squared = false,
 }) => {
-  const [isCollapseOpen, setIsCollapseOpen] = useState<boolean>(false);
-
-  const collapsePanel = () => {
-    var content: HTMLElement | null = document.querySelector(
-      '.ProgressBar__Steps'
-    );
-    content?.classList.toggle('hide');
-    setIsCollapseOpen(!isCollapseOpen);
-  };
-  const { numberOfSteps, completedLen } = useGetCompleted(steps, 'Complete');
-  const getCurrentTask = () => {
-    if (completedLen < numberOfSteps && steps[completedLen]) {
-      return steps[completedLen];
-    }
-  };
-  const buttonText = useButtonText(getCurrentTask(), steps.length);
-
   return (
-    <div className="ProgressBar">
-      <section className="ProgressBar__Main">
-        <i className="ProgressBar__Main__StatusIndicator" />
-        <p className="ProgressBar__Main__Description">{headerText}</p>
-      </section>
-      <article className="ProgressBar__Sub">
-        <i>
-          {completedLen}/{numberOfSteps} tasks completed
-        </i>
-        <i
-          className={`fa fa-sort-${isCollapseOpen ? 'asc' : 'desc'}`}
-          onClick={collapsePanel}
-        />
-      </article>
-      <ul className="ProgressBar__Steps">
-        {steps.map((step) => {
+    <div>
+      <ProgressBarWrapper activeStep={activeStep} orientation={orientation}>
+        {steps.map((step: StepData, index: number) => {
+          let stepClass = '';
+          const completed = activeStep > index + 1;
+          if (completed) {
+            stepClass = 'is-completed';
+          }
+          if (activeStep === index + 1) {
+            stepClass = 'is-active';
+          }
+
           return (
-            <StepItem
-              key={step.text}
-              id={step.id}
-              text={step.text}
-              status={step.status}
-              taskClicked={taskClickHandler}
+            <ProgressStep
+              key={step.id || index}
+              {...step}
+              className={stepClass}
+              activeStep={activeStep}
+              completed={completed}
+              active={activeStep === index + 1}
+              color={step.color || color}
+              icon={step.icon || icon}
+              orientation={orientation}
+              squared={squared}
             />
           );
         })}
-      </ul>
-      <div className="ProgressBar__Mobile">
-        <i className="ProgressBar__Mobile__Text">{getCurrentTask()?.text}</i>
-        <i className="ProgressBar__Mobile__Status">{status}</i>
-        <button
-          type="button"
-          className="ProgressBar__Mobile__Button"
-          onClick={() => taskClickHandler(getCurrentTask()?.text)}
-        >
-          {buttonText}
-        </button>
-      </div>
+      </ProgressBarWrapper>
     </div>
   );
 };
+
+export default ProgressBar;

@@ -1,0 +1,15 @@
+import { Playground } from 'docz';
+import ProgressBar from '../components/molecules/ProgressBar/ProgressBar';
+import '../components/molecules/ProgressBar/ProgressBar.scss';
+
+# Basic Implementation
+
+<Playground>
+    <ProgressBar
+        steps={[{"id": 1},{ "id": 2 },{ "id": 3},{ "id": 4}]}
+        activeStep={5}
+        orientation="horizontal"
+        color="#4B0082"
+        squared={false}
+    />
+</Playground>

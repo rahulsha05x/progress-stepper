@@ -1,9 +1,9 @@
 import React from 'react';
-import Line from '../atoms/Line/Line';
-import Circle from '../atoms/Circle/CircleIcon';
-import TextWrapper from '../molecules/TextWrapper/TextWrapper';
-import Step from '../molecules/StepperItem/Step';
-import IconWrapper from '../molecules/IconContainer/IconWrapper';
+import Line from '../../atoms/Line/Line';
+import Circle from '../../atoms/Circle/CircleIcon';
+import TextWrapper from '../TextWrapper/TextWrapper';
+import Step from '../StepperItem/Step';
+import IconWrapper from '../IconContainer/IconWrapper';
 interface Props {
   activeStep: number;
   className?: string;

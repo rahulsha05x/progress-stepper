@@ -1,0 +1,37 @@
+import { Playground } from 'docz';
+import ProgressBar from '../components/molecules/ProgressBar/ProgressBar';
+
+# Custom Icons for each Step
+
+<Playground>
+    <ProgressBar
+        steps={[
+            {
+                id: 1,
+                text: 'Step 1',
+                status: 'Pending',
+                icon: <i className="fa fa-location-arrow"></i>,
+            },
+            {
+                id: 2,
+                text: 'Step 2',
+                status: 'Pending',
+                icon: <i className="fa fa-minus"></i>,
+            },
+            {
+                id: 3,
+                text: 'Step 3',
+                status: 'Pending',
+                icon: <i className="fa fa-plane"></i>,
+            },
+            {
+                id: 4,
+                text: 'Step 4',
+                status: 'Pending',
+                icon: <i className="fa fa-star"></i>,
+            }
+        ]}
+        activeStep={4}
+        color="#4B0082"
+    />
+</Playground>
