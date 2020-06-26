@@ -8,21 +8,21 @@ export const Circle = ({
   children,
   active,
 }: {
-    completed: boolean;
-    icon: any;
-    color: string;
-    className?: string;
-    squared?: boolean;
-    children?: any;
-    active?: boolean;
-  }) => {
+  completed: boolean;
+  icon: any;
+  color: string;
+  className?: string;
+  squared?: boolean;
+  children?: any;
+  active?: boolean;
+}) => {
   const styles = {
     background: completed ? color : 'none',
     borderRadius: squared ? '0px' : '50%',
     borderColor: active || completed ? color : '#ccc',
   };
   return (
-    <div className={`circle ${className}`} style={styles}>
+    <div data-testid="circle" className={`circle ${className}`} style={styles}>
       {completed && icon}
     </div>
   );
