@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NewProgressStep from './NewProgressStep';
+import NewProgressStep from './ProgressStep';
 
 export interface StepData {
   text?: string | object;
@@ -28,7 +28,7 @@ export const getStatus = (activeStep: number, index: number) => {
   }
   return stepClass;
 };
-const NewProgressBar1: React.FC<any> = ({
+const ProgressBarContainer: React.FC<any> = ({
   steps,
   activeStep,
   align = 'center',
@@ -58,4 +58,4 @@ const NewProgressBar1: React.FC<any> = ({
   );
 };
 
-export default NewProgressBar1;
+export default ProgressBarContainer;

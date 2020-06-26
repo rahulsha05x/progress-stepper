@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import './App.scss';
 
-import ProgressBar, {
-  StepData,
-} from './components/molecules/ProgressBar/ProgressBar';
+import { StepData } from './components/molecules/ProgressBar/ProgressBar';
 
-import NewProgressBar from './components/progress-ui/NewProgressBar';
+import ProgressBar from './components/progress-ui/ProgressBar';
 import NewProgressBar1, {
   getStatus,
-} from './components/progress-ui/ProgressBar1';
+} from './components/progress-ui/ProgressBarContainer';
 import Circle from './components/atoms/Circle/CircleIcon';
 import Line from './components/atoms/Line/Line';
 import IconWrapper from './components/molecules/IconContainer/IconWrapper';
@@ -109,7 +107,7 @@ function App() {
           <h2 className="text-center">React Progress Tracker</h2>
           <div>
             <h4>Basic implementation</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithoutText}
               activeStep={4}
               color="#4B0082"
@@ -120,7 +118,7 @@ function App() {
           </div>
           <div>
             <h4>Steps with Text Horizontal Alignment</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithText}
               activeStep={4}
               color="#4B0082"
@@ -131,7 +129,7 @@ function App() {
           </div>
           <div>
             <h4>Vertical implementation</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithoutText}
               activeStep={4}
               color="#4B0082"
@@ -142,7 +140,7 @@ function App() {
           </div>
           <div>
             <h4>Vertical implementation With Text</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithText}
               activeStep={4}
               color="#4B0082"
@@ -153,7 +151,7 @@ function App() {
           </div>
           <div>
             <h4>Squared Markers</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithoutText}
               activeStep={4}
               color="#4B0082"
@@ -164,7 +162,7 @@ function App() {
           </div>
           <div>
             <h4>Default Colored Markers</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithoutText}
               activeStep={2}
               orientation="horizontal"
@@ -174,7 +172,7 @@ function App() {
           </div>
           <div>
             <h4>Custom Icon Markers</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithoutText}
               activeStep={2}
               orientation="horizontal"
@@ -185,7 +183,7 @@ function App() {
           </div>
           <div>
             <h4>Custom Step Progress</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithProgress}
               activeStep={3}
               orientation="horizontal"
@@ -196,7 +194,7 @@ function App() {
           </div>
           <div>
             <h4>Steps with different colors</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithColors}
               activeStep={5}
               orientation="horizontal"
@@ -207,7 +205,7 @@ function App() {
           </div>
           <div>
             <h4>Steps with different icons</h4>
-            <NewProgressBar
+            <ProgressBar
               steps={stepsWithCustomIcons}
               activeStep={5}
               orientation="horizontal"

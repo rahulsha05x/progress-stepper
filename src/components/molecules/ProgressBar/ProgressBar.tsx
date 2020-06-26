@@ -20,13 +20,14 @@ const ProgressBar: React.FC<Props> = ({
   steps,
   taskClickHandler,
 }) => {
-
   const [isCollapseOpen, setIsCollapseOpen] = useState<boolean>(false);
 
   const collapsePanel = () => {
-    var content: HTMLElement | null = document.querySelector(".ProgressBar__Steps");
-    content ?.classList.toggle('hide');
-    setIsCollapseOpen(!isCollapseOpen)
+    var content: HTMLElement | null = document.querySelector(
+      '.ProgressBar__Steps'
+    );
+    content?.classList.toggle('hide');
+    setIsCollapseOpen(!isCollapseOpen);
   };
   const { numberOfSteps, completedLen } = useGetCompleted(steps, 'Complete');
   const getCurrentTask = () => {
@@ -46,7 +47,10 @@ const ProgressBar: React.FC<Props> = ({
         <i>
           {completedLen}/{numberOfSteps} tasks completed
         </i>
-        <i className={`fa fa-sort-${isCollapseOpen ? 'asc' : 'desc'}`} onClick={collapsePanel} />
+        <i
+          className={`fa fa-sort-${isCollapseOpen ? 'asc' : 'desc'}`}
+          onClick={collapsePanel}
+        />
       </article>
       <ul className="ProgressBar__Steps">
         {steps.map((step) => {
@@ -62,12 +66,12 @@ const ProgressBar: React.FC<Props> = ({
         })}
       </ul>
       <div className="ProgressBar__Mobile">
-        <i className="ProgressBar__Mobile__Text">{getCurrentTask() ?.text}</i>
+        <i className="ProgressBar__Mobile__Text">{getCurrentTask()?.text}</i>
         <i className="ProgressBar__Mobile__Status">{status}</i>
         <button
           type="button"
           className="ProgressBar__Mobile__Button"
-          onClick={() => taskClickHandler(getCurrentTask() ?.text)}
+          onClick={() => taskClickHandler(getCurrentTask()?.text)}
         >
           {buttonText}
         </button>
@@ -75,5 +79,3 @@ const ProgressBar: React.FC<Props> = ({
     </div>
   );
 };
-
-export default ProgressBar;
