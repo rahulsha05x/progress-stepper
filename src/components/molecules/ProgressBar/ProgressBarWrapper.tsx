@@ -42,18 +42,19 @@ const ProgressBarWrapper: React.FC<any> = ({
     return React.Children.map(children, (child, index) => {
       currentItemStatus = getStatus(activeStep, index);
       return React.cloneElement(child, {
-        currentItemStatus,
-        itemIndex: index,
+        currentitemstatus: currentItemStatus,
+        itemindex: index,
       });
     });
   };
   const renderChild = renderChildren();
   return (
-    <div>
-      <ul className={`progress-tracker --${orientation} ${className}`}>
-        {renderChild}
-      </ul>
-    </div>
+    <ul
+      data-testid="progressBar-wrapper"
+      className={`progress-tracker --${orientation} ${className}`}
+    >
+      {renderChild}
+    </ul>
   );
 };
 

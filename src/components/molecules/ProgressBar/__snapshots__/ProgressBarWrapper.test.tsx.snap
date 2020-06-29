@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBarWrapper Renders ProgressBar wrapper 1`] = `
+<ul
+  class="progress-tracker --vertical "
+  data-testid="progressBar-wrapper"
+>
+  <li
+    currentitemstatus="is-active"
+    itemindex="0"
+  >
+    Child example
+  </li>
+</ul>
+`;

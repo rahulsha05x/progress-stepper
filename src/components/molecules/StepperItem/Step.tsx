@@ -7,24 +7,21 @@ interface StepProps {
   text?: string;
   children?: any;
 }
-export const Step = ({
-  className,
-  color,
-  completed = false,
-  content,
-  text,
-  children,
-}: StepProps) => {
+export const Step = ({ className = '', children }: StepProps) => {
   const getChildren = () => {
     return React.Children.map(children, (child, index) => {
       if (child) {
         return React.cloneElement(child, {
-          itemIndex: index,
+          itemindex: index,
         });
       }
     });
   };
   const child = getChildren();
-  return <li className={`progress-step ${className}`}>{child}</li>;
+  return (
+    <li data-testid="step" className={`progress-step ${className}`}>
+      {child}
+    </li>
+  );
 };
 export default Step;

@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBarWrapper Renders ProgressBar wrapper 1`] = `
+<div
+  data-testid="progress-bar"
+>
+  <ul
+    class="progress-tracker --horizontal "
+    data-testid="progressBar-wrapper"
+  >
+    <li
+      class="progress-step is-completed"
+      data-testid="step"
+    >
+      <div
+        class="progress-marker "
+        data-testid="icon-wrapper"
+      >
+        <div
+          class="circle "
+          data-testid="circle"
+          style="background: rgb(204, 204, 204); border-radius: 50%; border-color: #ccc;"
+        >
+          <i
+            class="fa fa-check"
+          />
+        </div>
+        <div
+          class="line "
+          data-testid="line"
+          style="background-color: rgb(204, 204, 204);"
+        />
+      </div>
+      <div
+        class="progress-text "
+      >
+        <div>
+          Step 1
+        </div>
+      </div>
+    </li>
+    <li
+      class="progress-step is-completed"
+      data-testid="step"
+    >
+      <div
+        class="progress-marker "
+        data-testid="icon-wrapper"
+      >
+        <div
+          class="circle "
+          data-testid="circle"
+          style="background: rgb(204, 204, 204); border-radius: 50%; border-color: #ccc;"
+        >
+          <i
+            class="fa fa-check"
+          />
+        </div>
+        <div
+          class="line "
+          data-testid="line"
+          style="background-color: rgb(204, 204, 204);"
+        />
+      </div>
+      <div
+        class="progress-text "
+      >
+        <div>
+          Step 2
+        </div>
+      </div>
+    </li>
+    <li
+      class="progress-step is-completed"
+      data-testid="step"
+    >
+      <div
+        class="progress-marker "
+        data-testid="icon-wrapper"
+      >
+        <div
+          class="circle "
+          data-testid="circle"
+          style="background: rgb(204, 204, 204); border-radius: 50%; border-color: #ccc;"
+        >
+          <i
+            class="fa fa-check"
+          />
+        </div>
+        <div
+          class="line "
+          data-testid="line"
+          style="background-color: rgb(204, 204, 204);"
+        />
+      </div>
+      <div
+        class="progress-text "
+      >
+        <div>
+          Step 3
+        </div>
+      </div>
+    </li>
+    <li
+      class="progress-step is-active"
+      data-testid="step"
+    >
+      <div
+        class="progress-marker "
+        data-testid="icon-wrapper"
+      >
+        <div
+          class="circle "
+          data-testid="circle"
+          style="background: none; border-radius: 50%; border-color: #ccc;"
+        />
+        <div
+          class="line "
+          data-testid="line"
+          style="background-color: rgb(204, 204, 204);"
+        />
+      </div>
+      <div
+        class="progress-text "
+      >
+        <div>
+          Step 4
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Step Component Renders Step component 1`] = `
+<li
+  class="progress-step "
+  data-testid="step"
+/>
+`;
