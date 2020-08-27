@@ -97,7 +97,7 @@ export const PaddingAngle: FC<Props> = ({
 
     const color = (endAngle: number) => {
       const values = getValueForGradients(endAngle);
-      //console.log(values);
+
       return values;
     };
     return (
@@ -117,7 +117,6 @@ export const PaddingAngle: FC<Props> = ({
   const createGradients = () => {
     if (gradientColor) {
       return Object.keys(gradientColor).map((item: any) => {
-        console.log(item);
         if (
           gradientColor['25%'] ||
           gradientColor['50%'] ||
@@ -128,7 +127,7 @@ export const PaddingAngle: FC<Props> = ({
           const number = item.slice(0, item.lastIndexOf('%'));
           return (
             <linearGradient
-              key="number"
+              key={number}
               id={`color${number}`}
               x1="0"
               y1="0"
