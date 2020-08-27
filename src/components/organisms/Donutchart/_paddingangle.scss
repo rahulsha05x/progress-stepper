@@ -4,10 +4,20 @@
 .recharts-wrapper {
   height: 100%;
 }
+.recharts-sector {
+  transition: fill 1s linear;
+}
 .outer {
   position: relative;
   width: 100%;
   height: 100%;
+}
+.inner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 // .children {
 //   position: absolute;

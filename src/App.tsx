@@ -1,26 +1,26 @@
 import React from 'react';
 import './App.scss';
-import RechartDonut from './components/organisms/Donutchart';
 import { PaddingAngle } from './components/organisms/Donutchart/PaddingAngle';
-import Donutsvg from './components/organisms/Donutchart/Donutsvg';
-import CircularProgressBarWrapper from './components/organisms/CircularProgressBar';
 
 function App() {
   return (
     <div className="container">
       <div className="container__row">
         <div className="container__col-sm-12 container__col-md-12">
-          {/* <ProgressBarPage /> */}
-          {/* <PaddingAngle />
-          <RechartDonut />
-
-        <Donutsvg /> */}
-          <PaddingAngle score={260}>
-            <div className="super">Developing</div>
-            <div className="sub">0/460</div>
+          <PaddingAngle
+            score={100}
+            totalScore={100}
+            height={250}
+            width={250}
+            gradientColor={{
+              '25%': { '0%': '#C7E6FF', '100%': '#A7D6FF' },
+              '50%': { '0%': '#82C0F2', '100%': '#3A9CEB' },
+              '75%': { '0%': '#5099D9', '100%': '#0556A0' },
+              '100%': { '0%': '#295C9D', '100%': '#052E70' },
+            }}
+          >
+            0
           </PaddingAngle>
-
-          {/* <CircularProgressBarWrapper /> */}
         </div>
       </div>
     </div>
