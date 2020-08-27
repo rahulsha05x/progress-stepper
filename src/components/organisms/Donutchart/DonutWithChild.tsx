@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import { Cell, Pie, PieChart, Sector } from 'recharts';
 
 const data1 = [{ name: 'Group A', value: 1, completed: true }];
@@ -20,12 +20,12 @@ type Props = {
   totalScore: number;
   height: number;
   width: number;
-  children?: ReactNode;
+  children?: any;
   baseColor?: string;
   trailColor?: string;
   gradientColor?: GradientColor;
 };
-export const PaddingAngle: FC<Props> = ({
+export const DonutWithChild: FC<Props> = ({
   score,
   children,
   totalScore,
@@ -35,71 +35,61 @@ export const PaddingAngle: FC<Props> = ({
   trailColor = 'blue',
   gradientColor,
 }) => {
-  const [value] = useState(0);
-  const innerTextRef: any = useRef(0);
-
   const data: Array<{ name: string; value: number; completed: boolean }> = [
     { name: 'Completed', value: score, completed: true },
     { name: 'Pending', value: totalScore - score, completed: false },
   ];
-  let speed = 450;
-  const updateCount = () => {
-    const target = score;
-    const count = innerTextRef.current.innerText;
-    let myscore = +count.split('/')[0];
-    const inc = target / speed;
-    if (myscore < target) {
-      const total = myscore + inc;
-      innerTextRef.current.innerText = `${Math.ceil(total)}`;
-      setTimeout(updateCount, 1);
-    } else {
-      innerTextRef.current.innerText = `${target}`;
+
+  const getMinMaxForColor = (
+    i: string,
+    index: number,
+    gradientColor: GradientColor
+  ) => {
+    const colorNum = +i.slice(0, i.lastIndexOf('%'));
+    let prevObject = Object.keys(gradientColor)[index - 1];
+    const prevVal = prevObject
+      ? +prevObject.slice(0, prevObject.lastIndexOf('%'))
+      : 0;
+    const nextObject = Object.keys(gradientColor)[index + 1];
+    const nextValue = nextObject
+      ? +nextObject.slice(0, nextObject.lastIndexOf('%'))
+      : 0;
+    let minVal = ((100 - colorNum) / 100) * 450;
+    const maxVal = ((100 - prevVal) / 100) * 450;
+    if (nextValue === 0) {
+      minVal = 0;
     }
+    return {
+      minVal,
+      maxVal,
+      colorNum,
+    };
   };
-  useEffect(() => {
-    updateCount();
-  });
-  const getValueForGradients = (endAngle: number) => {
+  const getValueForColor = (endAngle: number) => {
     if (gradientColor) {
       const gradientKeys = Object.keys(gradientColor);
       let endAngleValue = '';
-      gradientKeys.map((i, index) => {
-        const ele = gradientColor[i];
+      gradientKeys.map((item, index) => {
+        const ele = gradientColor[item];
         if (ele) {
-          const colorNum = +i.slice(0, i.lastIndexOf('%'));
-          let prevObject = Object.keys(gradientColor)[index - 1];
-          const prevVal = prevObject
-            ? +prevObject.slice(0, prevObject.lastIndexOf('%'))
-            : 0;
-          const nextObject = Object.keys(gradientColor)[index + 1];
-          const nextValue = nextObject
-            ? +nextObject.slice(0, nextObject.lastIndexOf('%'))
-            : 0;
-          let minVal = ((100 - (colorNum - 5)) / 100) * 450;
-          const maxVal = ((100 - (prevVal - 5)) / 100) * 450;
-          if (nextValue === 0) {
-            minVal = 0;
-          }
+          const { minVal, maxVal, colorNum } = getMinMaxForColor(
+            item,
+            index,
+            gradientColor
+          );
           if (endAngle < maxVal && endAngle >= minVal) {
             endAngleValue = `url(#color${colorNum})`;
           }
-
-          return { colorNum, maxVal, minVal, endAngle, endAngleValue };
         }
         return null;
       });
       return endAngleValue;
     }
+    return trailColor;
   };
 
   const renderActiveShape = (props: any) => {
     const { cx, cy, innerRadius, outerRadius, startAngle, endAngle } = props;
-
-    const color = (endAngle: number) => {
-      const values = getValueForGradients(endAngle);
-
-      return values;
-    };
     return (
       <g>
         <Sector
@@ -109,7 +99,7 @@ export const PaddingAngle: FC<Props> = ({
           outerRadius={outerRadius}
           startAngle={startAngle}
           endAngle={endAngle}
-          fill={color(endAngle)}
+          fill={getValueForColor(endAngle)}
         />
       </g>
     );
@@ -145,15 +135,14 @@ export const PaddingAngle: FC<Props> = ({
   };
   return (
     <div className="outer">
-      <div
-        className="inner"
-        style={{ width: `${width}px`, height: `${height}px` }}
-      >
-        <div className="super">Developing</div>
-        <div ref={innerTextRef} className="sub">
+      {children && (
+        <div
+          className="inner"
+          style={{ width: `${width}px`, height: `${height}px` }}
+        >
           {children}
         </div>
-      </div>
+      )}
 
       <PieChart width={width} height={height}>
         <defs>{createGradients()}</defs>

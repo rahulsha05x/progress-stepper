@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.scss';
-import { PaddingAngle } from './components/organisms/Donutchart/PaddingAngle';
+import { DonutWithChild } from './components/organisms/Donutchart/DonutWithChild';
+import DonutText from './components/molecules/DonutText';
 
 function App() {
   return (
     <div className="container">
       <div className="container__row">
         <div className="container__col-sm-12 container__col-md-12">
-          <PaddingAngle
+          <DonutWithChild
             score={100}
             totalScore={100}
             height={250}
@@ -19,8 +20,8 @@ function App() {
               '100%': { '0%': '#295C9D', '100%': '#052E70' },
             }}
           >
-            0
-          </PaddingAngle>
+            <DonutText score={100}>0</DonutText>
+          </DonutWithChild>
         </div>
       </div>
     </div>
