@@ -1,9 +1,16 @@
 import React, { useRef, FC, useEffect } from 'react';
 type ComponentProps = {
   score: number;
-  children: any;
+  children?: any;
+  superText?: any;
+  subText?: any;
 };
-const DonutText: FC<ComponentProps> = ({ score, children = 0 }) => {
+const DonutText: FC<ComponentProps> = ({
+  score,
+  superText,
+  children = 0,
+  subText = 0,
+}) => {
   const innerTextRef: any = useRef(0);
   const speed = 450;
   const updateCount = () => {
@@ -24,10 +31,12 @@ const DonutText: FC<ComponentProps> = ({ score, children = 0 }) => {
   });
   return (
     <>
-      <div className="super">Developing</div>
-      <div ref={innerTextRef} className="sub">
-        {children}
-      </div>
+      {superText && <div className="super">{superText}</div>}
+      {subText && (
+        <div ref={innerTextRef} className="sub">
+          {subText}
+        </div>
+      )}
     </>
   );
 };
