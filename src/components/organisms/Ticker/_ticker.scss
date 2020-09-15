@@ -1,0 +1,41 @@
+.todo-appear {
+  transform: translateY(0);
+  opacity: 0;
+  &-active {
+    transform: translateY(50px);
+    opacity: 1;
+    transition: opacity 500ms cubic-bezier(0.7, 0, 0.3, 1),
+      transform 500ms cubic-bezier(0.7, 0, 0.3, 1);
+  }
+}
+.todo-enter {
+  transform: translateY(0);
+  opacity: 0;
+  &-active {
+    opacity: 1;
+    transform: translateY(50px);
+    transition: opacity 500ms cubic-bezier(0.7, 0, 0.3, 1) 100ms,
+      transform 500ms cubic-bezier(0.7, 0, 0.3, 1) 100ms;
+  }
+  &-done {
+    opacity: 1;
+    transform: translateY(50px);
+    //transition: opacity 500ms linear 100ms, transform 500ms linear 100ms;
+  }
+}
+
+/* exit */
+.todo-exit {
+  opacity: 1;
+  transform: translateY(50px);
+  &-active {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 500ms cubic-bezier(0.7, 0, 0.3, 1),
+      transform 500ms cubic-bezier(0.7, 0, 0.3, 1);
+  }
+}
+.todo-exit-done {
+  opacity: 0;
+  transform: translateY(100px);
+}
