@@ -55,6 +55,6 @@
     "@testing-library/react": "^9.5.0",
     "docz": "^2.3.1",
     "gatsby-plugin-sass": "^2.3.6",
-    "node-sass": "^4.14.1"
+    "node-sass": "^7.0.0"
   }
 }
